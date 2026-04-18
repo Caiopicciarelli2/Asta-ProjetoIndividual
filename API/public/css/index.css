@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'BlackClover';
+  src: url('../assets/fonts/BlackCloverFont.woff') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --cor-default: #fff;
+    --cor-default2: black;
+    --font-blackcover: 'BlackClover';
+    --font-default: "Roboto", sans-serif;
+
+    /*cores tematicas no anime*/
+
+    /*asta criança*/
+    --asta-color1: #BDBDB0;
+    --asta-color2: #3F4831;
+    --asta-color3: #282923;
+    --asta-color4: #9F8C79;
+    --asta-color5: #483835;
+
+    /*asta adulto*/
+
+    --astaG-color1: #222222;
+    --astaG-color2: #EFE2C6;
+    --astaG-color3: #3A5A7E;
+    --astaG-color4: #905A32;
+    --astaG-color5: #BFA445;
+    --astaG-color6: #B8B8C5;
+    --astaG-color7: #B33A34;
+    --astaG-color8: #635348;
+    --astaG-color9: #3C3B32;
+    --astaG-color10: #F7C89D;
+
+    /*asta demonio*/
+
+    --astaD-color1: #B11011;
+    --astaD-color2: #E13C2D;
+    --astaD-color3: #F72E2E;
+    --astaD-color4: #6B0F0D;
+    --astaD-color5: #F86442;
+    --astaD-color6: #DDA24D;
+    --astaD-color7: #060606;
+    --astaD-color8: #1B0C0C;
+    --astaD-color9: #353437;
+
+}
+
+/*HEADER*/
+
+.navbar{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 10vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3vw;
+}
+
+.nav-logo h1{
+    font-family: var(--font-blackcover);
+    font-size: 2.2rem;
+}
+
+.nav-logo img{
+    height: 20px;
+}
+
+.nav-links ul{
+    display: flex;
+    gap: 2vw;
+    list-style: none;
+}
+
+.nav-links ul li a{
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--cor-default2);
+}
+
+.nav-links ul li a:hover{
+    color: var(--astaD-color1);
+}
+
+.nav-buttons{
+    display: flex;
+    gap: 1vw;
+}
+
+.nav-buttons button{
+    padding: 0.6vh 2vw;
+    cursor: pointer;
+    transition: 0.3s;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    font-weight: 600;
+}
+
+.btn-login{
+    background-color: var(--asta-color3);
+    color: var(--cor-default);
+}
+
+.btn-login:hover{
+    background-color: var(--cor-default);
+    color: var(--cor-default2);
+}
+
+.btn-cadastrar{
+    background-color: transparent;
+}
+
+.btn-cadastrar:hover{
+    background-color: var(--astaD-color1);
+    color: var(--cor-default);
+}
+
+/*MAIN*/
+
+.container-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+.divisao-nav{
+    height: 10%;
+    width: 100%;
+}
+
+.content-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 85%;
+}
+
+.content-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 95%;
+    width: 38%;
+}
+
+.content-left-row{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    height: 40%;
+}
+
+.content-left-row span{
+    background-color: var(--cor-default2);
+    color: var(--cor-default);
+
+    text-align: center;
+    padding: 0.3vh 0vw;
+    width: 10vw;
+    border-radius: 4px;
+}
+
+.content-left-row h1{
+    font-size: 2.2rem;
+}
+
+.content-left-row p{
+    text-align: justify;
+    width: 90%;
+}
+
+.content-right{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 95%;
+    width: 38%;
+}
+
+.content-right img{
+    height: 90%;
+
+    background-image: url(../assets/imgs/asta_vertical.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+    
