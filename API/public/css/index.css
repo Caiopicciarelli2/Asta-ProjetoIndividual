@@ -73,6 +73,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.3vw;
+    cursor: pointer;
 }
 
 .nav-logo h1 {
@@ -149,12 +150,12 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 85vh;
+    height: 70vh;
     width: 100%;
 }
 
 .divisao-nav {
-    height: 10%;
+    height: 30%;
     width: 100%;
 }
 
@@ -213,7 +214,7 @@ body {
 
 .content-left-row-buttons {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     width: 90%;
     height: 40%;
@@ -221,7 +222,6 @@ body {
 }
 
 .content-left-row-buttons button {
-    transform: translateY(70%);
     padding: 1.3rem;
 
     font-size: 1rem;
@@ -240,6 +240,7 @@ body {
 
 .btn-historia:hover {
     background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
 }
 
 .btn-quiz {
@@ -249,23 +250,39 @@ body {
 .btn-quiz:hover {
     background-color: var(--astaD-color1);
     color: var(--cor-default);
+    transform: scale(0.95);
 }
 
 .content-right {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    height: 95%;
+    height: 100%;
     width: 38%;
 }
 
-.content-right img {
+.content-right-img {
     height: 90%;
+    width: 50%;
 
-    background-image: url(../assets/imgs/asta_vertical.png);
+    background-image: url('../assets/imgs/asta_vertical.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 10%;
+
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.content-right-img:hover {
+    height: 90%;
+    width: 60%;
+
+    background-image: url('../assets/imgs/asta_vertical2.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
 }
 
 /*Section História*/
@@ -284,10 +301,8 @@ body {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    height: 10%;
+    height: 15%;
     width: 85%;
-    z-index: 1000;
-    transform: translateY(-100%);
 }
 
 .container-title-historia h1 {
@@ -303,16 +318,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 90%;
+    height: 85%;
     width: 80%;
     z-index: 1000;
-}
 
-.container-historia img {
-    position: absolute;
-    top: 93vh;
-    height: 72vh;
-    width: 80%;
+    background-image: url('../assets/imgs/asta_yuno.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 30px;
 }
 
@@ -329,7 +341,7 @@ body {
 .content-h-right p {
     text-align: justify;
     width: 80%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
 
     padding: 0.7em;
     border-radius: 10px;
@@ -353,7 +365,7 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    height: 20%;
+    height: 12%;
     width: 85%;
 }
 
@@ -428,7 +440,6 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 
-    transform: translateY(15%);
 }
 
 .content-m-frase p span {
@@ -446,7 +457,6 @@ body {
     height: 100vh;
     width: 100%;
     background-color: var(--cor-default2);
-    transform: translateY(8%);
 }
 
 .container-p-title {
@@ -517,6 +527,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     height: 92%;
     width: 22%;
 
@@ -533,6 +544,27 @@ body {
     transform: scale(1.02);
 }
 
+.box-item-personagem:hover .box-item-p-text{
+    bottom: 2%;
+    left: 2%;
+
+    height: 60%;
+    width: 83%;
+    padding: 0 1vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    border: 2px solid white;
+    border-radius: 0.3rem;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.box-item-personagem:hover .box-item-p-text p{
+    display: block;
+}
+
 .box-item-personagem span {
     position: absolute;
     top: 3%;
@@ -546,7 +578,7 @@ body {
     font-weight: 600;
 }
 
-.box-item-p-img{
+.box-item-p-img {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -554,26 +586,38 @@ body {
     width: 100%;
 }
 
-.box-item-p-img img{
+.box-item-p-img img {
     height: 100%;
     width: 100%;
 
     border-radius: 0.4rem;
 }
 
+.box-item-p-text{
+    position: absolute;
+    transition: 0.3s;
+}
+
+.box-item-p-text p{
+    display: none;
+
+    text-align: justify;
+    font-weight: 500;
+    color: white;
+}
+
 /*footer*/
 
-.container-footer{
+.container-footer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 30vh;
     width: 100%;
-    transform: translateY(26%);
 }
 
-.div-footer{
+.div-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -583,7 +627,7 @@ body {
 
 }
 
-.content-footer{
+.content-footer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -593,7 +637,7 @@ body {
     background-color: var(--cor-default);
 }
 
-.f-top{
+.f-top {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -602,7 +646,7 @@ body {
     border-bottom: 1px solid #0000008c;
 }
 
-.f-top-column{
+.f-top-column {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -611,7 +655,7 @@ body {
     width: 33.3%;
 }
 
-.column-title{
+.column-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -620,38 +664,39 @@ body {
     gap: 0.3vw;
 }
 
-.column-title img{
+.column-title img {
     height: 35px;
     cursor: pointer;
 }
 
-.column-title h3{
+.column-title h3 {
     font-size: 1.4rem;
     cursor: pointer;
 }
 
-.f-top-description{
+.f-top-description {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     height: 50%;
     width: 100%;
-    padding-left: 6px;   
+    padding-left: 6px;
 }
 
-.f-top-description span{
+.f-top-description span {
     text-align: center;
     color: rgba(0, 0, 0, 0.7);
     font-size: 0.9rem;
 
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.f-top-description span:hover{
+.f-top-description span:hover {
     transform: scale(1.02);
 }
 
-.f-top-column-2 .column-title{
+.f-top-column-2 .column-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -660,7 +705,7 @@ body {
     gap: 0.3vw;
 }
 
-.f-top-column-2{
+.f-top-column-2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -669,7 +714,7 @@ body {
     width: 33.3%;
 }
 
-.column-links{
+.column-links {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -677,7 +722,7 @@ body {
     width: 100%;
 }
 
-.column-links span{
+.column-links span {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -687,7 +732,7 @@ body {
     transform: translateY(-25%);
 }
 
-.column-links span a{
+.column-links span a {
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
@@ -697,11 +742,11 @@ body {
     color: var(--cor-default2);
 }
 
-.column-links span a:hover{
+.column-links span a:hover {
     color: var(--astaD-color1);
 }
 
-.f-top-column-3{
+.f-top-column-3 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -710,7 +755,7 @@ body {
     width: 33.3%;
 }
 
-.f-top-column-3 .column-title{
+.f-top-column-3 .column-title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -720,11 +765,10 @@ body {
 }
 
 
-.f-bottom{
+.f-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 20%;
     width: 100%;
 }
-
