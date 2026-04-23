@@ -341,7 +341,7 @@ body {
 .content-h-right p {
     text-align: justify;
     width: 80%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
 
     padding: 0.7em;
     border-radius: 10px;
@@ -404,7 +404,7 @@ body {
     text-align: justify;
     width: 80%;
 
-    font-size: 1.2rem;
+    font-size: 1.18rem;
     color: black;
     font-weight: 600;
 }
