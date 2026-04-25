@@ -38,13 +38,13 @@
                         <a href="./simulador.html">História</a>
                     </li>
                     <li>
-                        <a href="./dashboard/cards.html">Quiz</a>
+                        <a class="nav-disabled" href="./dashboard/cards.html">Quiz</a>
                     </li>
                     <li>
-                        <a href="./dashboard/dashboard.html">Placar</a>
+                        <a class="nav-disabled" href="./dashboard/dashboard.html">Placar</a>
                     </li>
                     <li>
-                        <a href="./dashboard/edicao-aviso.html">Seu Status</a>
+                        <a class="nav-disabled" href="./dashboard/edicao-aviso.html">Seu Status</a>
                     </li>
                 </ul>
             </div>
@@ -59,33 +59,54 @@
         </div>
     </header>
 
+    <div class="div-nav">
+
+    </div>
+
     <main>
         <div class="container-main">
-            <div class="divisao-nav">
-
-            </div>
             <div class="content-main">
-                <div class="content-left">
-                    <div class="content-left-row">
-                        <span class="span-title-main">BLACK COVER</span>
-                        <h1>ASTA</h1>
-                        <p>Conheça a história do personagem que nasceu sem magia, mas que através de <span
-                                class="span-description-main">determinação</span> busca
-                            se tornar o Rei Mago.</p>
+                <div class="content-main-top">
+                    <div class="main-top-row">
+                        <h1>A HISTÓRIA</h1>
                     </div>
-
-                    <div class="content-left-row-buttons">
-                        <button onclick="redirecionamento_historia()" class="btn-historia">
-                            Conhecer a História
-                        </button>
-                        <button onclick="redirecionamento_quiz()" class="btn-quiz">
-                            Fazer o Quiz
-                        </button>
+                    <div class="main-top-row">
+                        <div class="main-top-row-left">
+                            <span>DE</span>
+                        </div>
+                        <div class="main-top-row-right">
+                            <span>ASTA</span>
+                        </div>
                     </div>
                 </div>
-                <div class="content-right">
-                    <div class="content-right-img">
-
+                <div class="content-main-bottom">
+                    <div class="main-bottom-row">
+                        <p>
+                            Explore a jornada de Asta, suas amizades, rivalidades e os desafios que moldaram seu caminho
+                            até aqui. Descubra tudo sobre o protagonista que desafia o destino em um mundo onde magia é
+                            tudo.
+                        </p>
+                    </div>
+                    <div class="main-bottom-row">
+                        <button onclick="redirecionamento_historia()">
+                            <img src="./assets/imgs/logo.png" alt="logo_nav">
+                            Explorar História
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                    <div class="main-bottom-row">
+                        <div class="main-bottom-box">
+                            <img src="./assets/imgs/icone-main-1.png" alt="icone_main_1">
+                        </div>
+                        <div class="main-bottom-box">
+                            <img src="./assets/imgs/icone-main-2.png" alt="icone_main_2">
+                        </div>
+                        <div class="main-bottom-box">
+                            <img src="./assets/imgs/icone-main-3.png" alt="icone_main_3">
+                        </div>
+                        <div class="main-bottom-box">
+                            <img src="./assets/imgs/icone-main-4.png" alt="icone_main_4">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,83 +114,143 @@
     </main>
 
     <section>
-        <div class="container-historia">
-            <div class="container-title-historia">
-                <h1>
-                    A História de <span>Asta</span>
-                </h1>
-            </div>
-            <div class="content-historia">
-                <div class="content-h-left">
-                    <p>
-                        Asta nasceu em um mundo onde a magia define absolutamente tudo: o status social, as
-                        oportunidades e até o valor de uma pessoa dentro da sociedade. Desde cedo, fica claro que ele é
-                        completamente diferente dos outros, pois não possui nenhuma quantidade de mana — algo
-                        extremamente raro e visto como uma grande desvantagem. Enquanto todos ao seu redor conseguem
-                        usar magia naturalmente, Asta cresce enfrentando dificuldades, sendo subestimado e até
-                        ridicularizado por não ter esse poder essencial.
-
-                        Apesar disso, ele não aceita esse destino imposto. Em vez de desistir, Asta decide que vai
-                        provar que pode alcançar o topo mesmo sem magia. Com uma determinação fora do comum, ele passa a
-                        treinar intensamente o próprio corpo, desenvolvendo uma força física impressionante, resistência
-                        e disciplina que o destacam de qualquer outra pessoa. Sua personalidade barulhenta e cheia de
-                        energia também reflete sua vontade de nunca recuar diante dos desafios.
-                    </p>
+        <div class="container-motivacao">
+            <div class="container-motivacao-title">
+                <div class="motivacao-title-middle">
+                    <div class="linha-left">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                    </div>
+                    <div class="motivacao-text">
+                        <h1>MOTIVAÇÃO</h1>
+                    </div>
+                    <div class="linha-right">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                    </div>
                 </div>
-                <div class="content-h-right">
-                    <p>
-                        Criado em um orfanato ao lado de Yuno, seu rival e melhor amigo, Asta cresce em um ambiente
-                        simples, mas cheio de desafios. Desde pequenos, os dois compartilham o mesmo sonho de se tornar
-                        o Rei Mago, porém trilham caminhos muito diferentes para alcançá-lo. Enquanto Yuno demonstra um
-                        talento natural extraordinário para a magia, sendo reconhecido como um prodígio desde cedo, Asta
-                        precisa lidar com o fato de não possuir nenhum poder mágico, o que intensifica ainda mais a
-                        rivalidade entre eles.
+            </div>
+            <div class="content-motivacao">
+                <div class="content-motivacao-left">
+                    <div class="motivao-left-title">
+                        <span>
+                            A TRAJETÓRIA DE
+                            <strong>
+                                ASTA
+                            </strong>
+                            EXEMPLIFICA A
+                            <br>
+                            <strong>
+                                SUPERAÇÃO
+                            </strong>
+                        </span>
+                    </div>
+                    <div class="motivacao-left-row left-row-border">
+                        <div class="m-row-left-title">
+                            <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                        </div>
+                        <div class="m-row-left-description">
+                            <p>
+                                A trajetória de Asta, do anime Black Clover, destaca-se como um exemplo de superação,
+                                especialmente pela forma como o personagem evolui por meio do trabalho contínuo, mesmo
+                                diante de limitações significativas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="motivacao-left-row">
+                        <div class="m-row-left-title">
+                            <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                        </div>
+                        <div class="m-row-left-description">
+                            <p>
+                                Dessa forma, a narrativa vai além de um simples contexto teórico, assumindo também a
+                                função de transmitir uma mensagem inspiradora. A trajetória de Asta, presente em Black
+                                Clover, evidencia que a persistência e a determinação podem ser fatores decisivos para
+                                alcançar objetivos, servindo como motivação para diferentes pessoas em seus próprios
+                                desafios.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="motivacao-left-row">
+                        <div class="m-row-left-title">
+                            <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                        </div>
+                        <div class="m-row-left-description">
+                            <p>
+                                Ao destacar a importância do esforço contínuo e da superação de limitações, essa
+                                história reforça a ideia de que o desenvolvimento pessoal está diretamente ligado à
+                                prática, à disciplina e à capacidade de enfrentar dificuldades, mostrando que resultados
+                                são construídos ao longo do tempo por meio da dedicação.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-motivacao-right">
+                    <div class="m-right-box">
 
-                        Essa diferença não afasta os dois — pelo contrário, fortalece uma competição saudável e
-                        constante. Asta vê em Yuno um parâmetro do quão alto ele precisa chegar, enquanto Yuno, mesmo
-                        sendo naturalmente mais forte, reconhece o esforço e a determinação de Asta. Essa dinâmica de
-                        rivalidade é essencial para o crescimento de ambos, pois um impulsiona o outro a nunca se
-                        acomodar.
-                    </p>
+                    </div>
+                    <div class="m-right-mensagem">
+                        <div class="m-right-mensagem-banner">
+                            <img src="./assets/imgs/bandeira_asta.png" alt="bandeira-asta">
+                        </div>
+                        <div class="m-right-mensagem-text">
+                            <p>
+                                Não Importa o quão talentoso você seja, <br>
+                                <strong>
+                                    NÂO IMPORTA O QUÃO FORTE VOCÊ SEJA...
+                                </strong> <br>
+                                Se você desistir, não vai conseguir nada!
+                            </p>
+                            <span>
+                                - Asta
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="container-motivacao">
-            <div class="container-m-title">
-                <h1>Motivação</h1>
-            </div>
-            <div class="content-m">
-                <div class="content-m-row">
-                    <div class="content-m-row-left">
-                        <p>
-                            A trajetória de Asta, do anime Black Clover, destaca-se como um exemplo de superação,
-                            especialmente pela forma como o personagem evolui por meio do trabalho contínuo, mesmo
-                            diante de limitações significativas.
-                            <br><br>
-                            Dessa forma, a narrativa vai além de um simples contexto teórico, assumindo também a função
-                            de transmitir uma mensagem inspiradora. A trajetória de Asta, presente em Black Clover,
-                            evidencia que a persistência e a determinação podem ser fatores decisivos para alcançar
-                            objetivos, servindo como motivação para diferentes pessoas em seus próprios desafios.
-                            <br><br>
-                            Ao destacar a importância do esforço contínuo e da superação de limitações, essa história
-                            reforça a ideia de que o desenvolvimento pessoal está diretamente ligado à prática, à
-                            disciplina e à capacidade de enfrentar dificuldades, mostrando que resultados são
-                            construídos ao longo do tempo por meio da dedicação.
-                        </p>
+        <div class="container-quiz">
+            <div class="container-quiz-title">
+                <div class="quiz-title-middle">
+                    <div class="linha-left">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
                     </div>
-                    <div class="content-m-row-right">
-                        <img src="./assets/imgs/asta_superação.jpg" alt="">
+                    <div class="quiz-text">
+                        <h1>E AGORA?</h1>
+                    </div>
+                    <div class="linha-right">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
                     </div>
                 </div>
-                <div class="content-m-frase">
-                    <p>
-                        "Não importa o quão talentoso você seja, não importa o quão forte você seja... se você desistir,
-                        não vai conseguir nada!"
-                        <span>— Asta</span>
-                    </p>
+            </div>
+            <div class="content-quiz">
+                <div class="content-quiz-left">
+                    <div class="quiz-left-title">
+                        <h1>
+                            PRONTO PARA DESCOBRIR
+                            <br>
+                            <span>
+                                O SEU CAMINHO?
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="quiz-left-row">
+                        <p>
+                            Responda o quiz e descubra qual <span>atributo</span> <br>
+                            <span>evoluiu mais fortemente </span> dentro de você.
+                        </p>
+                    </div>
+                    <div class="quiz-left-row">
+                        <button onclick="redirecionamento_quiz()">
+                            <img src="./assets/imgs/logo.png" alt="logo_nav">
+                            Fazer o Quiz
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-quiz-right">
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -177,122 +258,147 @@
 
     <section>
         <div class="container-personagens">
-            <div class="container-p-title">
-                <h1>Personagens Principais</h1>
-            </div>
-            <div class="content-p">
-                <div class="content-p-row">
-                    <div class="content-p-row-title">
-                        <i class="fa-solid fa-cross"></i>
-                        <h1>Vila de Hage</h1>
+            <div class="container-personagens-title">
+                <div class="personagens-title-middle">
+                    <div class="linha-left">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
                     </div>
-                    <div class="content-p-row-box">
-                        <div class="box-item-personagem">
-                            <span>Yuno</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/yuno.webp" alt="Yuno">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    Um prodígio do Reino de Spade criado na Vila de Hage. Calmo, sério e extremamente
-                                    talentoso, Yuno possui uma conexão natural com o mana e um espírito do vento. Seu
-                                    objetivo é se tornar o Rei Mago, sempre rivalizando com Asta.
-                                </p>
-                            </div>
+                    <div class="personagens-text">
+                        <h1>PERSONAGENS PRINCIPAIS</h1>
+                    </div>
+                    <div class="linha-right">
+                        <img src="./assets/imgs/icone-folha.png" alt="icone_folha">
+                    </div>
+                </div>
+            </div>
+            <div class="content-personagens">
+                <div class="personagens-row">
+                    <div class="box-title-personagens">
+                        <h1>
+                            ARCO DA <br>
+                            <span>VILA HAGE</span>
+                        </h1>
+                    </div>
+                    <div class="box-cards-personagens">
+                        <div class="card-personagens" title="Clique para ver todos">
+                            <img src="./assets/imgs/asta-cards.png" alt="Asta_image">
+                            <h1>Asta</h1>
                         </div>
-                        <div class="box-item-personagem">
-                            <span>Orsi Orfai</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/padre.webp" alt="Padre Orsi">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    O padre da igreja da Vila de Hage, responsável por criar Yuno e Asta. Gentil,
-                                    responsável e um pouco rígido, ele representa a figura paterna que sempre cuidou dos
-                                    dois desde pequenos
-                                </p>
-                            </div>
+                        <div class="card-personagens" title="Clique para ver todos">
+                            <img src="./assets/imgs/yuno-cards.png" alt="Yuno_image">
+                            <h1>Yuno</h1>
                         </div>
-                        <div class="box-item-personagem">
-                            <span>Irmã Lily</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/lily.webp" alt="irmã Lily">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    Uma freira da igreja que ajudou a cuidar das crianças da vila. Bondosa e dedicada, é
-                                    muito querida por todos — especialmente por Asta, que vive se declarando para ela.
-                                </p>
-                            </div>
+                        <div class="card-personagens" title="Clique para ver todos">
+                            <img src="./assets/imgs/freira-cards.png" alt="Freira_image">
+                            <h1>Irmã Lily</h1>
                         </div>
-                        <div class="box-item-personagem">
-                            <span>Nash</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/nash.webp" alt="Nash">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    Um dos órfãos da igreja da Vila de Hage. Inicialmente implicante com Asta, mas no
-                                    fundo admira sua determinação. Representa bem o crescimento das crianças que
-                                    convivem com os protagonistas.
-                                </p>
-                            </div>
+                        <div class="card-personagens" title="Clique para ver todos">
+                            <img src="./assets/imgs/noelle-cards.png" alt="Noelle_image">
+                            <h1>Noelle Silva</h1>
                         </div>
                     </div>
                 </div>
-                <div class="content-p-row">
-                    <div class="content-p-row-title">
-                        <img src="./assets/imgs/touros_negros_icone.webp" alt="Logo Touros Negros">
-                        <h1>Touros Negros (Black Bulls)</h1>
+                <div class="personagens-divisao">
+                    <span>
+                        <img src="./assets/imgs/logo.png" alt="logo_nav">
+                    </span>
+                </div>
+                <div class="personagens-row">
+                    <div class="box-title-personagens">
+                        <h1>
+                            ARCO DOS <br>
+                            <span>
+                                TOUROS <br>
+                                NEGROS
+                            </span>
+                        </h1>
                     </div>
-                    <div class="content-p-row-box">
-                        <div class="box-item-personagem">
-                            <span>Capitão Yami</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/capitao_yami.webp" alt="Capitão Yami">
+                    <div class="box-cards-personagens">
+                        <div class="card-personagens-2" title="Clique para ver todos">
+                            <img src="./assets/imgs/yami-cards.png" alt="Yami-image">
+                            <h1>Yami Sukehiro</h1>
+                        </div>
+                        <div class="card-personagens-2" title="Clique para ver todos">
+                            <img src="./assets/imgs/magna-cards.png" alt="Magna-image">
+                            <h1>Magna Swing</h1>
+                        </div>
+                        <div class="card-personagens-2" title="Clique para ver todos">
+                            <img src="./assets/imgs/luck-cards.png" alt="Luckd-image">
+                            <h1>Luck Voltia</h1>
+                        </div>
+                        <div class="card-personagens-2" title="Clique para ver todos">
+                            <img src="./assets/imgs/finral-cards.png" alt="Finral-image">
+                            <h1>Finral Roulacase</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-logar">
+            <div class="content-logar">
+                <div class="content-logar-row">
+                    <div class="mensagem-login">
+                        <div class="mensagem-login-box">
+                            <span>
+                                FAÇA
+                                <button onclick="redirecionamento_login()">
+                                    LOGIN
+                                </button>
+                                OU
+                            </span>
+                        </div>
+                        <div class="mensagem-login-box">
+                            <span>
+                                <button onclick="redirecionamento_cadastro()" class="btn-logar-c">
+                                    CADASTRE-SE
+                                </button>
+                            </span>
+                        </div>
+                        <div class="mensagem-login-box">
+                            <span>
+                                E TENHA ACESSO A:
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="espaco-mensagem-login">
+
+                    </div>
+                </div>
+                <div class="content-logar-box">
+                    <div class="box-logar-placar">
+                        <div class="box-logar-icone">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="box-logar-text">
+                            <div class="box-logar-text-title">
+                                <h1>PLACARES</h1>
                             </div>
-                            <div class="box-item-p-text">
+                            <div class="box-logar-text-description">
                                 <p>
-                                    Líder dos Touros Negros. Forte, intimidador e direto, Yami valoriza ultrapassar os
-                                    próprios limites. Apesar da aparência bruta, confia muito em seus companheiros.
+                                    VEJA SUA POSIÇÃO NO RANK
+                                    E COMPARE SEU DESEMPENHO
+                                    COM OUTROS USUÁRIOS!
                                 </p>
                             </div>
                         </div>
-                        <div class="box-item-personagem">
-                            <span>Noelle Silva</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/noelle.jpeg" alt="Noelle Silva">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    Uma nobre da família Silva. No começo tem dificuldades em controlar sua magia, mas
-                                    evolui muito ao longo da história. Orgulhosa, mas com um lado sensível que aparece
-                                    com o tempo.
-                                </p>
-                            </div>
+                    </div>
+                    <div class="box-logar-status">
+                        <div class="box-logar-icone">
+                            <i class="fa-solid fa-clipboard-check"></i>
                         </div>
-                        <div class="box-item-personagem">
-                            <span>Magna Swing</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/magna.jpg" alt="Magna Swing">
+                        <div class="box-logar-text">
+                            <div class="box-logar-text-title">
+                                <h1>STATUS QUIZ</h1>
                             </div>
-                            <div class="box-item-p-text">
+                            <div class="box-logar-text-description">
                                 <p>
-                                    Impulsivo e cheio de energia, Magna é um mago de fogo com espírito de luta. Mesmo
-                                    não sendo nobre, compensa com esforço e determinação.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="box-item-personagem">
-                            <span>Luck Voltia</span>
-                            <div class="box-item-p-img">
-                                <img src="./assets/imgs/luck.jpg" alt="Luck Voltia">
-                            </div>
-                            <div class="box-item-p-text">
-                                <p>
-                                    Ama batalhas e vive em busca de oponentes fortes. Seu comportamento é meio
-                                    excêntrico, mas sua habilidade com magia elétrica o torna um dos membros mais
-                                    perigosos do grupo.
+                                    ACOMPANHE SEU PROGRESSO,
+                                    VEJA SEUS ACERTOS, ERROS
+                                    E QUIZ CONCLUÍDOS!
                                 </p>
                             </div>
                         </div>
@@ -304,49 +410,87 @@
 
     <footer>
         <div class="container-footer">
-            <div class="div-footer"></div>
-
             <div class="content-footer">
-                <div class="f-top">
-                    <div class="f-top-column">
-                        <div class="column-title">
-                            <img src="./assets/imgs/logo.png" alt="logo black clover">
-                            <h3>Asta</h3>
+                <div class="content-footer-t">
+                    <div class="content-footer-top">
+                        <div class="footer-top-column">
+                            <h1 class="footer-logo">
+                                Black
+                                <img src="./assets/imgs/logo.png" alt="logo_nav">
+                                Cover
+                            </h1>
                         </div>
-                        <div class="f-top-description">
-                            <span>Explore a história e poderes do
-                                personagem Asta de Black Clover.</span>
+                        <div class="footer-top-column-2">
+                            <h1>Links</h1>
                         </div>
-                    </div>
-                    <div class="f-top-column-2">
-                        <div class="column-title">
-                            <h3>Navegação</h3>
-                        </div>
-                        <div class="column-links">
-                            <span>
-                                <a href="">História</a>
-                                <a href="">Quiz</a>
-                            </span>
-                            <span>
-                                <a href="">Placar</a>
-                                <a href="">Status</a>
-                            </span>
+                        <div class="footer-top-column-3">
+                            <h1>Contato</h1>
                         </div>
                     </div>
-                    <div class="f-top-column-3">
-                        <div class="column-title">
-                            <h3>Sobre</h3>
+                    <div class="content-footer-bottom">
+                        <div class="footer-column-bottom">
+                            <p>
+                                Black Clover acompanha Asta, um jovem sem poderes mágicos em um mundo onde a magia é
+                                tudo,
+                                determinado a se tornar o Rei Mago.
+                            </p>
                         </div>
-                        <div class="f-top-description">
-                            <span>Site dedicado a documentar a jornada de Asta, o garoto sem magia que sonha em se
-                                tornar o Rei Mago.</span>
+                        <div class="footer-column-bottom">
+                            <ul>
+                                <li>
+                                    <a href="./simulador.html">
+                                        História
+                                    </a>
+                                    <a href="./simulador.html">
+                                        Quiz
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./simulador.html">
+                                        Placar
+                                    </a>
+                                    <a href="./simulador.html">
+                                        Seu Status
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-column-bottom-2">
+                            <ul>
+                                <li>
+                                    <a href="https://github.com/Caiopicciarelli2">
+                                        <i class="fa-brands fa-github"></i>
+                                        caiopicciarelli2
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/caiopicciarelli/">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                        Caio Picciarelli
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:caio.psilva@sptech.school">
+                                        <i class="fa-solid fa-at"></i>
+                                        caio.psilva@sptech.school
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:caiopicciarellisilva7@gmail.com">
+                                        <i class="fa-solid fa-at"></i>
+                                        caiopicciarellisilva7@gmail.com
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="f-bottom">
-                    <div class="f-bottom-text">
-                        <h6>© 2026 Asta - Black Clover. Todos os direitos reservados</h6>
-                    </div>
+                <div class="content-footer-b">
+                    <p>
+                        <span>
+                            Produzido por Caio Picciarelli Silva.
+                        </span><br>
+                        © 2020 Copyright — Todos os direitos reservados à São Paulo Tech
+                        School.
+                    </p>
                 </div>
             </div>
         </div>
