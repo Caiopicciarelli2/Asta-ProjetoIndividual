@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function redirecionamento_login(){
     window.location.href = "login.html";
 }
@@ -12,4 +13,3 @@ function redirecionamento_historia(){
 
 function redirecionamento_quiz(){
     window.location.href = "quiz.html";
-}
