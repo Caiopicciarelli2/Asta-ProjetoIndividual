@@ -601,7 +601,7 @@ quiz
 }
 
 .quiz-left-title h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
 }
 
 .quiz-left-title h1 span {
@@ -971,7 +971,7 @@ quiz
 }
 
 .btn-logar-c {
-    width: 22vw !important;
+    width: 25vw !important;
 }
 
 .mensagem-login-box span button:hover {
