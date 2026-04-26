@@ -1,371 +1,368 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
-  font-family: 'BlackClover';
-  src: url('../assets/fonts/BlackCloverFont.woff') format('truetype');
+    font-family: 'BlackClover';
+    src: url('../assets/fonts/BlackCloverFont.woff') format('truetype');
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-  background-color: black;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 :root {
-  --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-footer: 65px;
-}
+    --cor-default: #fff;
+    --cor-default2: black;
+    --font-blackcover: 'BlackClover';
+    --font-default: "Roboto", sans-serif;
 
-.container {
-  display: flex;
-  width: 80%;
-  margin: auto;
-}
+    /*cores tematicas no anime*/
 
-.container h1{
-  font-family: 'BlackClover', sans-serif;
-}
+    /*asta criança*/
+    --asta-color1: #BDBDB0;
+    --asta-color2: #3F4831;
+    --asta-color3: #282923;
+    --asta-color4: #9F8C79;
+    --asta-color5: #483835;
 
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
+    /*asta adulto*/
 
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
+    --astaG-color1: #222222;
+    --astaG-color2: #EFE2C6;
+    --astaG-color3: #3A5A7E;
+    --astaG-color4: #905A32;
+    --astaG-color5: #BFA445;
+    --astaG-color6: #B8B8C5;
+    --astaG-color7: #B33A34;
+    --astaG-color8: #635348;
+    --astaG-color9: #3C3B32;
+    --astaG-color10: #F7C89D;
 
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
+    /*asta demonio*/
 
-.agora {
-  font-weight: 800;
-}
+    --astaD-color1: #B11011;
+    --astaD-color2: #E13C2D;
+    --astaD-color3: #F72E2E;
+    --astaD-color4: #6B0F0D;
+    --astaD-color5: #F86442;
+    --astaD-color6: #DDA24D;
+    --astaD-color7: #060606;
+    --astaD-color8: #1B0C0C;
+    --astaD-color9: #353437;
 
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* FOOTER */
-
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
 }
 
 /* LOGIN */
 
-.login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    background-image: url('../assets/imgs/image-login.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
-.login .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+.btn-home{
+    position: absolute;
+    top: 3%;
+    left: 5%;
+
+    padding: 0.7rem 3.5rem;
+    background-color: var(--astaD-color1);
+
+    border: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.card {
-  width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  color: palevioletred;
-  flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
+.btn-home:hover{
+    background-color: #b11010b2;
+    transform: scale(0.98);
 }
 
-.card h2 {
-  margin: 0;
-  font-size: 30px;
+.content-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85%;
+    width: 35%;
+
+    background-image: url('../assets/imgs/papel-login.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
 }
 
-.formulario {
-  display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: space-around;
-  flex-direction: column;
+.content-login-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    position: relative;
+    width: 90%;
+    height: 30%;
 }
 
-.formulario span {
-  font-size: 15px;
-  font-weight: 800;
+.login-row-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 90%;
+    height: 25%;
 }
 
-.formulario input {
-  border: 2px solid #32b9cd;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
+.login-row-text p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #000000b0;
+
+    padding: 0;
+    margin: 0;
 }
 
-.formulario select {
-  border: 2px solid #32b9cd;
-  background-color: white;
-  color: gray;
-  height: 36px;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
+.divisao-titulo-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 4%;
+    background-color: var(--astaD-color1);
 }
 
-.campo {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding: 5px 0;
+.divisao-titulo-login img {
+    height: 50px;
 }
 
-.botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-  background-color: #ED145B;
-  width: 120px;
-  height: 30px;
-  align-self: center;
-  margin-top: 20px;
+.text-login {
+    text-align: center;
+    width: 65%;
+
+    transform: translateY(50%);
+    font-size: 1.2rem !important;
 }
+
+.login-row-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    height: 40%;
+}
+
+.login-row-title h1 {
+    font-size: 6.5rem;
+}
+
+.login-row-title h1 span {
+    color: var(--astaD-color1);
+}
+
+.form-campo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    gap: 0.5vw;
+    width: 75%;
+    height: 40%;
+}
+
+.form-campo span {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.form-campo i.fa-envelope,
+.form-campo i.fa-lock {
+    position: absolute;
+    left: 3%;
+    top: 57%;
+}
+
+.form-campo i.fa-eye {
+    position: absolute;
+    right: 3%;
+    top: 57%;
+
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.form-campo input {
+    background-color: transparent;
+    border-radius: 5px;
+
+    padding-left: 3rem;
+
+    height: 35%;
+    width: 90%;
+
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.login-row-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-logar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 55%;
+    width: 75%;
+
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255);
+
+    background-color: var(--astaD-color1);
+    border-radius: 15px;
+    border: none;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-row-button button img {
+    height: 30px;
+}
+
+.login-row-divisao {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 75%;
+    height: 5%;
+}
+
+.login-row-divisao span {
+    width: 40%;
+    height: 2px;
+    background-color: black;
+}
+
+.login-row-divisao p {
+    font-weight: 500;
+}
+
+.btn-cadastrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55%;
+    width: 75%;
+    gap: 0.5vw;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+
+    background-color: transparent;
+    border: 1px solid var(--astaD-color1);
+    border-radius: 15px;
+    border: none;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cadastrar span {
+    color: var(--astaD-color1);
+}
+
+.btn-cadastrar:hover {
+    border: 2px solid black;
+    transform: scale(0.98);
+}
+
+.btn-logar:hover {
+    background-color: #b11010d7;
+    transform: scale(0.98);
+}
+
+
+
+
+/*erros e loading*/
 
 .loading-div {
-  width: 50px;
-  display: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 10%;
+    height: 68%;
+    z-index: 10000;
 }
 
 .loading-div img {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
 }
 
 #div_erros_login {
-  display: none
+    display: none
 }
 
-/* FORMULARIO */
-
-.alerta_erro{
-  display: flex;
-  justify-content: flex-end;
+.alerta_erro {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .card_erro {
-  display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
-  border-radius: 4px;
-  border: #ED145B 3px solid;
-  padding: 10px;
-  margin-right: 10%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 20%;
+
+    position: absolute;
+    top: 40%;
+    left: 40%;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+
+    z-index: 10000000;
 }
 
-.card_erro #mensagem_erro{
-  font-weight: 500;
-  font-size: 20px;
+.card_erro i{
+    position: absolute;
+    top: 5%;
+    right: 3%;
+
+    font-size: 1.4rem;
+    color: var(--astaD-color1);
+
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
+.card_erro i:hover{
+    color: #b110109d;
 }
 
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  margin-bottom: 10px;
-  border: 2px solid #32b9cd;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #ED145B;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
-}
-
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-/* SIMULADOR */
-
-.simulador {
-  color: white;
-}
-
-.simulador .container {
-  flex-direction: column;
-  overflow: scroll; 
-  height: var(--tamanho-simulador);
-}
-
-/* ALERTA */
-
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.mensagem-alarme .informacao {
-  width: 66%;
-}
-
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
-}
-
-@keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: var(--astaD-color1) !important;
 }

@@ -1,15 +1,20 @@
-<<<<<<< HEAD
+
 function redirecionamento_login(){
-    window.location.href = "login.html";
+    window.location.href = "./login.html";
 }
 
 function redirecionamento_cadastro(){
-    window.location.href = "cadastro.html";
+    window.location.href = "./cadastro.html";
 }
 
 function redirecionamento_historia(){
-    window.location.href = "simulador.html";
+    window.location.href = "./simulador.html";
 }
 
 function redirecionamento_quiz(){
-    window.location.href = "quiz.html";
+    window.location.href = "./quiz.html";
+}
+
+function redirecionamento_home(){
+    window.location.href = "./index.html";
+}
