@@ -63,7 +63,7 @@ body {
     height: 100vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/image-login.png');
+    background-image: url('../assets/imagens/image-login.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -99,7 +99,7 @@ body {
     height: 85%;
     width: 35%;
 
-    background-image: url('../assets/imgs/papel-login.png');
+    background-image: url('../assets/imagens/papel-login.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -301,7 +301,7 @@ body {
     height: 100vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/image-login.png');
+    background-image: url('../assets/imagens/image-login.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -314,7 +314,7 @@ body {
     height: 85%;
     width: 35%;
 
-    background-image: url('../assets/imgs/papel-login.png');
+    background-image: url('../assets/imagens/papel-login.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -462,12 +462,12 @@ body {
 }
 
 .i-cpf {
-    top: 47.7%;
+    top: 47.2%;
     left: 10%;
 }
 
 .i-email {
-    top: 47.7%;
+    top: 47.2%;
     left: 54.3%;
 }
 

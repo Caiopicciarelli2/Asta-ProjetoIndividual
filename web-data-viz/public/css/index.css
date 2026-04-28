@@ -68,7 +68,7 @@ body {
     z-index: 100000000000;
 
 
-    background-image: url('../assets/imgs/textura-nav.png');
+    background-image: url('../assets/imagens/textura-nav.png');
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -171,7 +171,7 @@ body {
     height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/imagem-home.png');
+    background-image: url('../assets/imagens/imagem-home.png');
     background-repeat: no-repeat;
     background-size: 100%;
 
@@ -317,7 +317,7 @@ body {
     height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/imagem-motivacao.png');
+    background-image: url('../assets/imagens/imagem-motivacao.png');
     background-repeat: no-repeat;
     background-size: 100%;
     border-bottom: 8px solid var(--asta-color4);
@@ -459,7 +459,7 @@ body {
     height: 70%;
     overflow: visible;
 
-    background-image: url('../assets/imgs/asta_motivacao.png');
+    background-image: url('../assets/imagens/asta_motivacao.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -472,7 +472,7 @@ body {
     width: 90%;
     height: 30%;
 
-    background-image: url('../assets/imgs/papel-motivacao.png');
+    background-image: url('../assets/imagens/papel-motivacao.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 105% 215%;
@@ -529,7 +529,7 @@ quiz
     height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/imagem-quiz.png');
+    background-image: url('../assets/imagens/imagem-quiz.png');
     background-repeat: no-repeat;
     background-size: 100%;
 
@@ -671,7 +671,7 @@ quiz
     width: 100%;
     transform: translate(15%, -10%);
 
-    background-image: url('../assets/imgs/asta_vertical.png');
+    background-image: url('../assets/imagens/asta_vertical.png');
     background-size: 60% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -681,7 +681,7 @@ quiz
 }
 
 .content-quiz-right span:hover {
-    background-image: url('../assets/imgs/asta_vertical2.webp');
+    background-image: url('../assets/imagens/asta_vertical2.webp');
     transform: translate(15%, 0%);
 }
 
@@ -693,7 +693,7 @@ quiz
     height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/imagem-personagens.png');
+    background-image: url('../assets/imagens/imagem-personagens.png');
     background-repeat: no-repeat;
     background-size: 100%;
 
@@ -816,7 +816,7 @@ quiz
     width: 22%;
     border-radius: 50px;
 
-    background-image: url('../assets/imgs/card-vila-hage.png');
+    background-image: url('../assets/imagens/card-vila-hage.png');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -838,7 +838,7 @@ quiz
     width: 22%;
     border-radius: 50px;
 
-    background-image: url('../assets/imgs/card-touros-negros.png');
+    background-image: url('../assets/imagens/card-touros-negros.png');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -908,7 +908,7 @@ quiz
     height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imgs/imagem-logar.png');
+    background-image: url('../assets/imagens/imagem-logar.png');
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -1070,7 +1070,7 @@ quiz
     width: 100%;
     border-top: 8px solid var(--asta-color4);
 
-    background-image: url('../assets/imgs/textura-nav.png');
+    background-image: url('../assets/imagens/textura-nav.png');
 }
 
 .content-footer {

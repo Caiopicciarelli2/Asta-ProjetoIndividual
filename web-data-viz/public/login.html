@@ -5,18 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asta - Login</title>
 
     <link rel="stylesheet" href="./css/login_cadastro.css">
     <link rel="icon" href="./assets/imgs/logo.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>Asta - Login</title>
-
-    <script src="./js/redirecionamento.js"></script>
-    <script src="./js/sessao.js"></script>
 </head>
 
 <body>
@@ -43,7 +39,7 @@
                     </div>
                     <div class="login-row-text">
                         <span class="divisao-titulo-login">
-                            <img src="./assets/imgs/icone-folha.png" alt="logo_nav">
+                            <img src="./assets/icones/icone-folha.png" alt="logo_nav">
                         </span>
                         <p class="text-login">
                             Entre em sua conta para continuar
@@ -61,7 +57,6 @@
                         <i class="fa-solid fa-lock"></i>
                         <span>Senha:</span>
                         <input id="senha_input" type="password" placeholder="Digite sua senha">
-                        <i class="fa-solid fa-eye"></i>
                     </div>
                     <div id="div_aguardar" class="loading-div">
                         <img src="./assets/circle-loading.gif" id="loading-gif">
@@ -72,7 +67,7 @@
                 <div class="content-login-row">
                     <div class="login-row-button">
                         <button class="btn-logar" onclick="entrar()">
-                            <img src="./assets/imgs/logo.png" alt="logo_nav">
+                            <img src="./assets/icones/logo.png" alt="logo_nav">
                             ENTRAR
                             <i class="fa-solid fa-arrow-right-long"></i>
                         </button>
@@ -97,85 +92,8 @@
         </div>
     </main>
 </body>
-
 </html>
 
-<script>
-
-    let btn_fechar_erro = document.getElementById('btn_fechar_card_erro');
-
-    btn_fechar_erro.addEventListener('click', ()=>{
-        cardErro.style.display = "none"
-    })
-
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "flex"
-            mensagem_erro.innerHTML = "Preencha os campos corretamente!";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none";
-        cardErro.style.display = 'none';
-    }
-
-</script>
+<script src="./js/redirecionamento.js"></script>
+<script src="./js/sessao.js"></script>
+<script src="./js/login.js"></script>
