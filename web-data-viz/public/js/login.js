@@ -13,8 +13,8 @@ function entrar() {
     var senhaVar = senha_input.value;
 
     if (emailVar == "" || senhaVar == "") {
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        cardErro.style.display = "flex"
+        mensagem_erro.innerHTML = "Preencha todos os campos!";
         finalizarAguardar();
         return false;
     }
@@ -46,10 +46,9 @@ function entrar() {
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
-                sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                 setTimeout(function () {
-                    window.location = "./dashboard/cards.html";
+                    window.location = "./quiz.html";
                 }, 1000); // apenas para exibir o loading
 
             });
