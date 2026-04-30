@@ -376,7 +376,7 @@ body {
 
 .content-motivacao-left {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     width: 60%;
@@ -396,7 +396,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 80%;
     height: 40%;
     border-bottom: 4px solid var(--astaD-color1);
 }
@@ -425,7 +425,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
+    width: 93.5%;
     height: 20%;
 }
 
@@ -437,18 +437,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 91.7%;
+    width: 91%;
     height: 80%;
     border-left: 3px solid #ff0000;
 }
 
-.m-row-left-description {
+.m-row-left-description p {
     text-align: justify;
+    width: 80%;
     padding: 0rem 2rem;
 
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.2rem;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .m-right-box {
@@ -458,11 +459,6 @@ body {
     width: 90%;
     height: 70%;
     overflow: visible;
-
-    background-image: url('../assets/imagens/asta_motivacao.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .m-right-mensagem {
@@ -476,6 +472,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 105% 215%;
+    opacity: 0.9;
 }
 
 .m-right-mensagem-banner {
@@ -485,7 +482,7 @@ body {
 
 
 .m-right-mensagem-banner img {
-    transform: translate(10%);
+    transform: translate(15%);
     height: 111%;
     border-radius: 10px;
 }
@@ -922,141 +919,162 @@ quiz
     height: 90%;
 }
 
-.content-logar-row {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    width: 100%;
-    height: 80%;
-}
-
-.mensagem-login {
+.content-logar-top {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 80%;
-    height: 65%;
-}
-
-.mensagem-login-box {
-    height: 30%;
     width: 100%;
+    height: 50%;
 }
 
-.mensagem-login-box span {
+.box-mensagem-logar{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5vw;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+
+    border: 6px solid #000;
+    border-radius: 10px;
+}
+
+.box-msg-icone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 95%;
+    gap: 0.6vw;
+}
+
+.box-msg-icone-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 95%;
+}
+
+.box-msg-icone span{
+    width: 15%;
+    height: 6%;
+    background: linear-gradient(to right, transparent, var(--astaD-color1), transparent);
+}
+
+.box-msg-icone img{
+    height: 20px;
+    opacity: 0.6;
+}
+
+.box-msg-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 95%;
+}
+
+.box-msg-text h3, .box-msg-icone-2 h3{
+    font-size: 1.8rem;
+}
+
+.box-msg-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22%;
+    width: 95%;
+}
+
+.box-msg-btn button{
+    padding: 0.6vh 3vw;
 
     font-size: 3.5rem;
-}
+    font-weight: 600;
 
-.mensagem-login-box span button {
-    padding: 1rem;
-    width: 12vw;
-
-    background-color: transparent;
     border: none;
-    border-radius: 15px;
-
-    font-size: 3.5rem;
-    color: var(--asta-color2);
-    font-weight: 700;
+    background-color: transparent;
+    color: var(--astaD-color1);
+    border-radius: 0.6rem;
 
     cursor: pointer;
     transition: 0.3s;
 }
 
-.btn-logar-c {
-    width: 25vw !important;
-}
-
-.mensagem-login-box span button:hover {
-    background-color: var(--asta-color2);
+.box-msg-btn button:hover{
+    background-color: var(--astaD-color1);
     color: white;
 }
 
-.espaco-mensagem-login {
+.content-logar-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: 15%;
+    width: 100%;
+    height: 30%;
 }
 
-.content-logar-box {
+.box-logar-bottom{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
-    width: 80%;
+    height: 80%;
+    width: 40%;
+}
+
+.divisao-logar-bottom{
+    width: 2px;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box-logar-b-icone{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     height: 35%;
-}
-
-.box-logar-placar,
-.box-logar-status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 80%;
-    height: 45%;
-    border: 3px solid #000;
 }
 
-.box-logar-icone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-    height: 100%;
+.box-logar-b-icone i{
+    padding: 1.4vh 0.8vw;
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px;
 
-    background-color: var(--asta-color2);
-    border-right: 3px solid;
-}
 
-.box-logar-icone i {
-    font-size: 5rem;
+    font-size: 2.4rem;
     color: white;
 }
 
-.box-logar-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-}
-
-.box-logar-text-title {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    width: 90%;
-    height: 30%;
-}
-
-.box-logar-text-title h1 {
-    color: var(--asta-color2);
-}
-
-.box-logar-text-description {
+.box-logar-b-title{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 90%;
-    height: 30%;
-}
-
-.box-logar-text-description p {
-    text-align: justify;
+    height: 25%;
     width: 80%;
+}
 
-    font-size: 1.2rem;
-    font-weight: 500;
+.box-logar-b-title h3{
+    font-size: 1.6rem;
+}
+
+.box-logar-b-text{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30%;
+    width: 80%;
+}
+
+.box-logar-b-text p{
+    text-align: justify;
+    width: 90%;
+
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 /*footer*/

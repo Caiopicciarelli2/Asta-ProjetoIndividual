@@ -73,7 +73,12 @@ body {
     top: 3%;
     left: 5%;
 
-    padding: 0.7rem 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+
+    padding: 0.7rem 3rem;
     background-color: var(--astaD-color1);
 
     border: none;
@@ -84,6 +89,10 @@ body {
 
     cursor: pointer;
     transition: 0.3s;
+}
+
+.btn-home i{
+    font-size: 1rem;
 }
 
 .btn-home:hover {
