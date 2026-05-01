@@ -46,7 +46,6 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
-    // var fkEmpresa = req.body.idEmpresaVincularServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -60,21 +59,23 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cpf) //, fkEmpresa
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+        usuarioModel.verificar_cadastro(email, cpf)
+            .then(function (resultado) {
+
+                if (resultado.length > 0) {
+                    res.status(403).send("Já existe um cadastro com esse<br> email ou CPF.");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
+                else {
+                    return usuarioModel.cadastrar(nome, email, senha, cpf)
+                        .then(function (cadastro) {
+                            res.json(cadastro[0] || cadastro);
+                        });
                 }
-            );
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                res.status(500).json(erro);
+            });
     }
 }
 

@@ -48,7 +48,7 @@ function entrar() {
                 sessionStorage.ID_USUARIO = json.id;
 
                 setTimeout(function () {
-                    window.location = "./quiz.html";
+                    window.location = "./index.html";
                 }, 1000); // apenas para exibir o loading
 
             });

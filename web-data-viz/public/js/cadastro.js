@@ -1,6 +1,4 @@
-
 // btn fechar cardErro
-
 let btn_fechar_erro = document.getElementById('btn_fechar_card_erro');
 
 btn_fechar_erro.addEventListener('click', () => {
@@ -21,60 +19,60 @@ function cadastrar() {
     // Verificando se há algum campo em branco
     if (nomeVar == '' || emailVar == '' || senhaVar == '' || confirmacaoSenhaVar == '' || cpfVar == '') {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             Preencha todos os campos!
         `;
         finalizarAguardar();
         return false;
 
-    }else if(nomeVar.length <= 4){
+    } else if (nomeVar.length <= 4) {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             O campo NOME: (${nomeVar}) deve ter 5 ou mais caracteres! 
         `;
         finalizarAguardar();
         return false;
 
-    }else if(cpfVar.length != 11){
+    } else if (cpfVar.length != 11) {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             O campo CPF: ${cpfVar} deve conter 11 caracteres! 
         `;
         finalizarAguardar();
         return false;
 
-    }else if(!emailVar.includes('@') && !emailVar.includes('.')){
+    } else if (!emailVar.includes('@') && !emailVar.includes('.')) {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             O campo EMAIL: (${emailVar}) deve ser um email válido! <br>
             Com "@" e "."! 
         `;
         finalizarAguardar();
         return false;
 
-    }else if(senhaVar.length <= 5){
+    } else if (senhaVar.length <= 5) {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             O campo SENHA: (${senhaVar}) deve ter 6 ou mais caracteres! 
         `;
         finalizarAguardar();
         return false;
 
-    }else if(confirmacaoSenhaVar != senhaVar){
+    } else if (confirmacaoSenhaVar != senhaVar) {
         cardErro.style.display = 'flex';
-        mensagem_erro.innerHTML = 
-        `
+        mensagem_erro.innerHTML =
+            `
             O campo SENHA CONFIRMAÇÃO: (${confirmacaoSenhaVar}) deve ser igual ao campo SENHA: (${senhaVar})!
         `;
         finalizarAguardar();
         return false;
     }
-     else {
+    else {
         setInterval(sumirMensagem, 5000);
     }
 
@@ -109,7 +107,12 @@ function cadastrar() {
                 limparFormulario();
                 finalizarAguardar();
             } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
+                // erro de usuario com o mesmo email ou cpf
+                return resposta.text().then(function (erroMsg) {
+                    cardErro.style.display = 'flex';
+                    mensagem_erro.innerHTML = erroMsg;
+                    finalizarAguardar();
+                });
             }
         })
         .catch(function (resposta) {

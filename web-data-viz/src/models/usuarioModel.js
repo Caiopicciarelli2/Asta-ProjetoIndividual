@@ -9,6 +9,16 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function verificar_cadastro(email, cpf) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: duplicated insert in database',\n \t\t >> verifique se a requisição de cadastro tem um email ou cpf já cadastrado por outro usuario\n\n function verificar_cadastro(): ", email, cpf)
+    var instrucaoSql = `
+        SELECT * FROM usuario WHERE email = '${email}' OR cpf = '${cpf}';
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql, [email, cpf]);
+}
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha, cpf) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, cpf);
@@ -24,5 +34,6 @@ function cadastrar(nome, email, senha, cpf) {
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    verificar_cadastro
 };

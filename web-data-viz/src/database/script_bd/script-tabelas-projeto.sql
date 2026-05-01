@@ -55,4 +55,12 @@ CREATE TABLE resposta_usuario(
     CONSTRAINT cFk_RespostaUsuario_fk_alternativa FOREIGN KEY (fk_alternativa) REFERENCES alternativa(id_alternativa)
 );
 
+CREATE TABLE aviso (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(100),
+	descricao VARCHAR(150),
+	fk_usuario INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);
+
 
