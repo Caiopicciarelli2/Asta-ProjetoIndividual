@@ -161,6 +161,32 @@ body {
     color: inherit !important;
 }
 
+.container-perfil{
+    display: none;
+    position: absolute;
+    top: 90%;
+    right: 4.5%;
+
+    height: 15vh;
+    width: 15%;
+    background-color: #00000094;
+    border-radius: 0.8rem;
+    z-index: 1000000000000;
+}
+
+/*logado comportamento*/
+
+#nav-buttons img {
+    cursor: pointer;
+    border-radius: 50%;
+
+    transition: 0.3s;
+}
+
+#nav-buttons img:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
 /*MAIN*/
 
 .container-main {
@@ -402,7 +428,8 @@ body {
 }
 
 .motivao-left-title span {
-    font-size: 3.2rem;
+    font-size: 2.6rem;
+    font-weight: 600;
 }
 
 .motivao-left-title span strong {
@@ -928,7 +955,7 @@ quiz
     height: 50%;
 }
 
-.box-mensagem-logar{
+.box-mensagem-logar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -940,7 +967,7 @@ quiz
     border-radius: 10px;
 }
 
-.box-msg-icone{
+.box-msg-icone {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -949,7 +976,7 @@ quiz
     gap: 0.6vw;
 }
 
-.box-msg-icone-2{
+.box-msg-icone-2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -957,18 +984,18 @@ quiz
     width: 95%;
 }
 
-.box-msg-icone span{
+.box-msg-icone span {
     width: 15%;
     height: 6%;
     background: linear-gradient(to right, transparent, var(--astaD-color1), transparent);
 }
 
-.box-msg-icone img{
+.box-msg-icone img {
     height: 20px;
     opacity: 0.6;
 }
 
-.box-msg-text{
+.box-msg-text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -976,11 +1003,12 @@ quiz
     width: 95%;
 }
 
-.box-msg-text h3, .box-msg-icone-2 h3{
+.box-msg-text h3,
+.box-msg-icone-2 h3 {
     font-size: 1.8rem;
 }
 
-.box-msg-btn{
+.box-msg-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -988,7 +1016,7 @@ quiz
     width: 95%;
 }
 
-.box-msg-btn button{
+.box-msg-btn button {
     padding: 0.6vh 3vw;
 
     font-size: 3.5rem;
@@ -1003,7 +1031,7 @@ quiz
     transition: 0.3s;
 }
 
-.box-msg-btn button:hover{
+.box-msg-btn button:hover {
     background-color: var(--astaD-color1);
     color: white;
 }
@@ -1016,7 +1044,7 @@ quiz
     height: 30%;
 }
 
-.box-logar-bottom{
+.box-logar-bottom {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1025,13 +1053,13 @@ quiz
     width: 40%;
 }
 
-.divisao-logar-bottom{
+.divisao-logar-bottom {
     width: 2px;
     height: 40%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.box-logar-b-icone{
+.box-logar-b-icone {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1039,7 +1067,7 @@ quiz
     width: 80%;
 }
 
-.box-logar-b-icone i{
+.box-logar-b-icone i {
     padding: 1.4vh 0.8vw;
     background-color: rgb(0, 0, 0);
     border-radius: 15px;
@@ -1049,7 +1077,7 @@ quiz
     color: white;
 }
 
-.box-logar-b-title{
+.box-logar-b-title {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1057,11 +1085,11 @@ quiz
     width: 80%;
 }
 
-.box-logar-b-title h3{
+.box-logar-b-title h3 {
     font-size: 1.6rem;
 }
 
-.box-logar-b-text{
+.box-logar-b-text {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1069,7 +1097,7 @@ quiz
     width: 80%;
 }
 
-.box-logar-b-text p{
+.box-logar-b-text p {
     text-align: justify;
     width: 90%;
 

@@ -44,13 +44,16 @@
                     </li>
                 </ul>
             </div>
-            <div class="nav-buttons">
+            <div class="nav-buttons" id="nav-buttons">
                 <button class="btn-login" onclick="redirecionamento_login()">
                     Logar
                 </button>
                 <button class="btn-cadastrar" onclick="redirecionamento_cadastro()">
                     Cadastrar-se
                 </button>
+            </div>
+            <div class="container-perfil" id="perfil-user">
+
             </div>
         </div>
     </header>
@@ -328,7 +331,7 @@
     </section>
 
     <section>
-        <div class="container-logar">
+        <div class="container-logar" id="section-logar">
             <div class="content-logar">
                 <div class="content-logar-top">
                     <div class="box-mensagem-logar">
@@ -427,7 +430,7 @@
                             </p>
                         </div>
                         <div class="footer-column-bottom">
-                            <ul>
+                            <ul id="footer-links-ul">
                                 <li>
                                     <a href="./simulador.html">
                                         História
@@ -493,7 +496,4 @@
 
 <script src="./js/sessao.js"></script>
 <script src="./js/redirecionamento.js"></script>
-
-<script>
-    
-</script>
+<script src="./js/index.js"></script>

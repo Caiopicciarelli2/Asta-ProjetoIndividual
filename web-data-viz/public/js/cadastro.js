@@ -107,10 +107,11 @@ function cadastrar() {
                 limparFormulario();
                 finalizarAguardar();
             } else {
-                // erro de usuario com o mesmo email ou cpf
                 return resposta.text().then(function (erroMsg) {
                     cardErro.style.display = 'flex';
                     mensagem_erro.innerHTML = erroMsg;
+
+                    setInterval(sumirMensagem, 5000);
                     finalizarAguardar();
                 });
             }
@@ -124,5 +125,5 @@ function cadastrar() {
 }
 
 function sumirMensagem() {
-    cardErro.style.display = "none";
+    cardErro.style.display = 'none';
 }
