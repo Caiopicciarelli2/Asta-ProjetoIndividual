@@ -118,6 +118,12 @@ body {
     gap: 1vw;
 }
 
+.nav-buttons img {
+    height: 65px;
+    border-radius: 50%;
+    border: 1px solid var(--astaD-color6);
+}
+
 .nav-buttons button {
     padding: 1vh 2vw;
     cursor: pointer;
@@ -161,17 +167,178 @@ body {
     color: inherit !important;
 }
 
-.container-perfil{
+.container-perfil {
     display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
     position: absolute;
     top: 90%;
-    right: 4.5%;
+    right: 2%;
 
-    height: 15vh;
-    width: 15%;
-    background-color: #00000094;
+    height: 30vh;
+    width: 20%;
+    background-color: #000000d8;
+    border: 2px solid var(--astaD-color6);
     border-radius: 0.8rem;
     z-index: 1000000000000;
+}
+
+.container-perfil .fa-circle-xmark {
+    position: absolute;
+    top: 6%;
+    right: 6%;
+
+    font-size: 1.2rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container-perfil .fa-circle-xmark:hover{
+    color: var(--astaD-color1);
+}
+
+.container-perfil-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 90%;
+}
+
+.container-perfil-title h1 {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.perfil-title-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 40%;
+}
+
+.perfil-title-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    height: 90%;
+    width: 60%;
+    gap: 1vh;
+}
+
+.perfil-title-right h1 {
+    padding: 0;
+    margin: 0;
+
+    font-size: 1.3rem;
+    color: white;
+}
+
+.perfil-title-right span {
+    color: var(--astaD-color6);
+    font-weight: 600;
+}
+
+.perfil-title-left img {
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid var(--astaD-color6);
+}
+
+.divisao-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5%;
+    width: 85%;
+    gap: 0.5vw;
+}
+
+.divisao-perfil span {
+    background-color: var(--astaD-color6);
+    height: 10%;
+    width: 38%;
+}
+
+.divisao-perfil img {
+    height: 25px;
+}
+
+.content-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40%;
+    width: 85%;
+}
+
+.content-perfil-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60%;
+    width: 90%;
+    gap: 0.2vw;
+}
+
+.content-perfil-info i {
+    font-size: 1.1rem;
+    color: var(--astaD-color6);
+}
+
+.content-perfil-info h6 {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1rem;
+    color: var(--astaD-color6);
+}
+
+.content-perfil-info h6 span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: white;
+}
+
+.content-perfil-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40%;
+    width: 90%;
+}
+
+.content-perfil-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 68%;
+    gap: 0.5vw;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+
+    background-color: #881917;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.content-perfil-button button:hover {
+    background-color: var(--astaD-color4);
+    transform: scale(0.98);
 }
 
 /*logado comportamento*/
