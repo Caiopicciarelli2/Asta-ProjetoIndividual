@@ -60,7 +60,16 @@ CREATE TABLE aviso (
 	titulo VARCHAR(100),
 	descricao VARCHAR(150),
 	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+	CONSTRAINT cFk_Aviso_fk_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario)
 );
+
+CREATE TABLE permissao (
+	id_permissao INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(45) DEFAULT 'user',
+    fk_usuario INT,
+    CONSTRAINT cFk_Permissao_fk_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario),
+    CONSTRAINT cCheck_Permissao_tipo CHECK (tipo IN('user', 'admin'))
+);
+
 
 
