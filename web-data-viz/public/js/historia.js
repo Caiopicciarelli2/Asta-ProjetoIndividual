@@ -13,9 +13,9 @@ if (validar_sessao_home) {
     let ul_navLinks = document.getElementById('nav-links-ul');
     let div_navButtons = document.getElementById('nav-buttons');
 
-    let container_sectionLogar = document.getElementById('section-logar');
+    // let container_sectionLogar = document.getElementById('section-logar');
 
-    let ul_footerLinks = document.getElementById('footer-links-ul');
+    // let ul_footerLinks = document.getElementById('footer-links-ul');
 
     let container_perfilUser = document.getElementById('perfil-user');
 
@@ -23,10 +23,10 @@ if (validar_sessao_home) {
     ul_navLinks.innerHTML =
         `
             <li>
-                <a class="selected" href="./index.html">Home</a>
+                <a href="./index.html">Home</a>
             </li>
             <li>
-                <a href="./historia.html">História</a>
+                <a class="selected" href="./historia.html">História</a>
             </li>
             <li>
                 <a href="./quiz.html">Quiz</a>
@@ -84,28 +84,28 @@ if (validar_sessao_home) {
         `;
 
     // removendo a section de logar
-    container_sectionLogar.style.display = 'none';
+    // container_sectionLogar.style.display = 'none';
 
     //mudando o comportamento do footer
-    ul_footerLinks.innerHTML =
-        `
-                <li>
-                    <a href="./historia.html">
-                        História
-                    </a>
-                    <a href="./quiz.html">
-                        Quiz
-                    </a>
-                </li>
-                <li>
-                    <a href="./placar.html">
-                        Placar
-                    </a>
-                    <a href="./status.html">
-                        Seu Status
-                    </a>
-                </li>
-        `;
+    // ul_footerLinks.innerHTML =
+    //     `
+    //             <li>
+    //                 <a href="./historia.html">
+    //                     História
+    //                 </a>
+    //                 <a href="./quiz.html">
+    //                     Quiz
+    //                 </a>
+    //             </li>
+    //             <li>
+    //                 <a href="./placar.html">
+    //                     Placar
+    //                 </a>
+    //                 <a href="./status.html">
+    //                     Seu Status
+    //                 </a>
+    //             </li>
+    //     `;
 
     // lógica do perfil
     let container_perfil_user = document.getElementById('perfil-user');
@@ -127,16 +127,3 @@ if (validar_sessao_home) {
     })
 
 }
-
-// cards personagens click
-
-let cards_personagens_home = document.querySelectorAll('.card-personagens');
-
-cards_personagens_home.forEach(cards => {
-    cards.addEventListener('click', () => {
-        window.location = "../historia.html";
-    });
-});
-
-
-
