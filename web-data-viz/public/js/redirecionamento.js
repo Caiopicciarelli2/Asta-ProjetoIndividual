@@ -1,4 +1,3 @@
-
 function redirecionamento_login(){
     window.location.href = "./login.html";
 }
@@ -17,4 +16,8 @@ function redirecionamento_quiz(){
 
 function redirecionamento_home(){
     window.location.href = "./index.html";
+}
+
+function redirecionamento_dashboard(){
+    window.location.href = "./dashboard.html";
 }

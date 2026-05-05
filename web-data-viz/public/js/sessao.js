@@ -7,10 +7,15 @@ function validarSessao() {
     // email e nome do BD
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var perm = sessionStorage.PERM_USUARIO;
 
     // verifica se o usuário está em uma sessão:
     if (email != null && nome != null) {
-    return true;
+        if(perm == 2){
+            return 'user';
+        }else{
+            return 'admin';
+        }
 
     // se ele não estiver
     } else if (pagina_now == ('/quiz.html' || '/placar.html' || '/status.html' || 'dash.html')) {

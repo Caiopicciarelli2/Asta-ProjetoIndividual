@@ -14,20 +14,24 @@ USE Asta_Black_Clover;
 /*
 	Usuario e perm Schema
 */
+
+CREATE TABLE permissao (
+	id_permissao INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(45)
+);
+
+INSERT INTO permissao (tipo) VALUES
+	('admin'),
+    ('user');
+
 CREATE TABLE usuario(
 	id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
     cpf CHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100),
-    senha VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE permissao (
-	id_permissao INT PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(45) DEFAULT 'user',
-    fk_usuario INT,
-    CONSTRAINT cFk_Permissao_fk_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario),
-    CONSTRAINT cCheck_Permissao_tipo CHECK (tipo IN('user', 'admin'))
+    senha VARCHAR(50) NOT NULL,
+    fk_permissao INT DEFAULT 2,
+    CONSTRAINT cFk_Usuario_fk_permissao FOREIGN KEY (fk_permissao) REFERENCES permissao(id_permissao)
 );
 
 /*

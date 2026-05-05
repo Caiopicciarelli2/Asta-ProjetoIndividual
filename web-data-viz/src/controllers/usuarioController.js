@@ -18,10 +18,11 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         res.json({
-                            id: resultadoAutenticar[0].id_usuario,
+                            id: resultadoAutenticar[0].id,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
-                            cpf: resultadoAutenticar[0].cpf
+                            cpf: resultadoAutenticar[0].cpf,
+                            perm: resultadoAutenticar[0].perm
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -68,7 +69,7 @@ function cadastrar(req, res) {
                 else {
                     return usuarioModel.cadastrar(nome, email, senha, cpf)
                         .then(function (cadastro) {
-                            res.json(cadastro[0] || cadastro);
+                            res.json(cadastro);
                         });
                 }
             })
