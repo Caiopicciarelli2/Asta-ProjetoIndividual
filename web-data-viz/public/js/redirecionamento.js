@@ -7,7 +7,7 @@ function redirecionamento_cadastro(){
 }
 
 function redirecionamento_historia(){
-    window.location.href = "./simulador.html";
+    window.location.href = "./historia.html";
 }
 
 function redirecionamento_quiz(){
@@ -19,5 +19,5 @@ function redirecionamento_home(){
 }
 
 function redirecionamento_dashboard(){
-    window.location.href = "./dashboard.html";
+    window.location.href = "./dashboard/dashboard.html";
 }

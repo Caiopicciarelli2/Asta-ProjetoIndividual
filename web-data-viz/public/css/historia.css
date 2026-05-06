@@ -115,6 +115,8 @@ body {
 
 .nav-buttons {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1vw;
 }
 
@@ -150,12 +152,8 @@ body {
 
 .btn-cadastrar:hover {
     background-color: var(--astaD-color1);
+    border: 1px solid rgba(0, 0, 0, 0.0);
     color: var(--cor-default);
-}
-
-.div-nav {
-    height: 10vh;
-    width: 100%;
 }
 
 .nav-disabled {
@@ -166,6 +164,8 @@ body {
 .nav-disabled:hover {
     color: inherit !important;
 }
+
+/*perfil*/
 
 .container-perfil {
     display: none;
@@ -354,6 +354,34 @@ body {
     transform: scale(1.1) rotate(15deg);
 }
 
+/*logado admin comportamento*/
+
+.btn-admin {
+    padding: 0 1vw !important;
+    height: 5vh !important;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    font-weight: 600;
+}
+
+.btn-admin:hover {
+    background-color: var(--astaD-color1);
+    border: 1px solid rgba(0, 0, 0, 0.0);
+    color: var(--cor-default);
+}
+
+/*divisao-nav*/
+
+.div-nav {
+    height: 10vh;
+    width: 100%;
+}
+
 /*main*/
 
 .container-historia {
@@ -367,7 +395,6 @@ body {
     background-image: url('../assets/imagens/historia-main.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    border-bottom: 4px solid var(--astaG-color4);
 }
 
 .content-historia {
@@ -460,20 +487,128 @@ body {
     width: 45%;
 }
 
-/*section linhaTemporal*/
+/*divisao section*/
 
-.container-linhaTemporal {
+/*section introducao*/
+
+.container-introducao {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 270vh;
+    height: 90vh;
     width: 100%;
 
-    background-image: url('../assets/imagens/linha_temporal.png');
+    background-image: url('../assets/imagens/historia-introducao.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
-    border-bottom: 4px solid var(--astaG-color4);
 }
 
+.content-intro-top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 35%;
+    width: 90%;
+}
+
+.content-intro-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30%;
+    width: 100%;
+}
+
+.content-intro-title img{
+    height: 60px;
+}
+
+.content-intro-title h1{
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+
+    font-size: 2.5rem;
+}
+
+.content-intro-title h1 span{
+    font-size: 3.5rem;
+    color: var(--astaD-color1);
+}
+
+.intro-top-divisao{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 3%;
+    width: 88%;
+    gap: 0.5vw;
+}
+
+.intro-top-divisao span{
+    height: 2px;
+    width: 50%;
+    background: linear-gradient(to right, var(--astaD-color1), transparent);
+}
+
+.intro-top-divisao img{
+    height: 20px;
+}
+
+.content-intro-text{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50%;
+    width: 95%;
+}
+
+.content-intro-text p{
+    text-align: justify;
+    width: 45%;
+
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.699);
+}
+
+.content-intro-text p span{
+    color: var(--astaD-color1);
+}
+
+.content-intro-mid{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 55%;
+    width: 90%;
+}
+
+.intro-mid-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 31%;
+    height: 95%;
+
+    background-image: url('../assets/imagens/historia-intro-card.png');
+    background-size: 99% 100%;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+.content-intro-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 10%;
+    width: 90%; 
+}

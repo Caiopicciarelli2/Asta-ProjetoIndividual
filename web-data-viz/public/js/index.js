@@ -165,7 +165,7 @@ if (validar_sessao_home == 'user') {
     div_navButtons.innerHTML =
         `
             <img src="./assets/icones/user-asta.png" alt="icone_asta" title="Clique para ver seu perfil." id="btn-icone-perfil">
-            <button class="btn-admin" onlick="redirecionamento_dashboard()">Painel Administrador</button>
+            <button class="btn-admin" onclick="redirecionamento_dashboard()">Painel Administrador</button>
         `;
 
     // comportamento do perfil_user
