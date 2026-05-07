@@ -505,7 +505,7 @@ body {
 
 }
 
-.content-intro-top{
+.content-intro-top {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -514,7 +514,7 @@ body {
     width: 90%;
 }
 
-.content-intro-title{
+.content-intro-title {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -522,11 +522,11 @@ body {
     width: 100%;
 }
 
-.content-intro-title img{
+.content-intro-title img {
     height: 60px;
 }
 
-.content-intro-title h1{
+.content-intro-title h1 {
     margin: 0;
     padding: 0;
 
@@ -538,12 +538,12 @@ body {
     font-size: 2.5rem;
 }
 
-.content-intro-title h1 span{
+.content-intro-title h1 span {
     font-size: 3.5rem;
     color: var(--astaD-color1);
 }
 
-.intro-top-divisao{
+.intro-top-divisao {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -552,17 +552,17 @@ body {
     gap: 0.5vw;
 }
 
-.intro-top-divisao span{
+.intro-top-divisao span {
     height: 2px;
     width: 50%;
     background: linear-gradient(to right, var(--astaD-color1), transparent);
 }
 
-.intro-top-divisao img{
+.intro-top-divisao img {
     height: 20px;
 }
 
-.content-intro-text{
+.content-intro-text {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -570,7 +570,7 @@ body {
     width: 95%;
 }
 
-.content-intro-text p{
+.content-intro-text p {
     text-align: justify;
     width: 45%;
 
@@ -578,11 +578,11 @@ body {
     color: rgba(0, 0, 0, 0.699);
 }
 
-.content-intro-text p span{
+.content-intro-text p span {
     color: var(--astaD-color1);
 }
 
-.content-intro-mid{
+.content-intro-mid {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -590,7 +590,7 @@ body {
     width: 90%;
 }
 
-.intro-mid-box{
+.intro-mid-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -605,10 +605,168 @@ body {
     border-radius: 30px;
 }
 
-.content-intro-bottom{
+.content-intro-bottom {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     height: 10%;
-    width: 90%; 
+    width: 90%;
+}
+
+/*linha temporal*/
+
+.container-linhaTemporal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+
+    background-image: url('../assets/imagens/historia-linhaTemporal.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.container-linhaTemporal-title{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+}
+
+.container-linhaTemporal-title img{
+    height: 60px;
+}
+
+.container-linhaTemporal-title h1 {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+
+    font-size: 3rem;
+}
+
+.content-linhaTemporal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85%;
+    width: 100%;
+}
+
+.content-lT-top, .content-lT-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40%;
+    width: 92%;
+}
+
+.content-lT-top-left,
+.content-lT-top-right,
+.content-lT-bottom-left,
+.content-lT-bottom-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 50%;
+}
+
+.content-lT-mid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 92%;
+    border: 1px solid white;
+}
+
+.box-lT{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vh;
+
+    height: 100%;
+    width: 30%;
+
+    background-image: url('../assets/imagens/historia-intro-card.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    border-radius: 15px;
+}
+
+.box-lT-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 90%;
+}
+
+.box-lT-title h6{
+    padding-top: 0%;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.box-lT-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40%;
+    width: 85%;
+}
+
+.box-lT-image img{
+    height: 90%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.box-lT-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 48%;
+    width: 80%;
+}
+
+.box-lT-text h4{
+    margin: 0;
+    padding: 0;
+}
+
+.box-lT-text p{
+    text-align: justify;
+
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.76);
+}
+
+/*section personagens*/
+
+.container-personagens{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90vh;
+    width: 100%;
+
+    background-image: url('../assets/imagens/historia-personagens.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
