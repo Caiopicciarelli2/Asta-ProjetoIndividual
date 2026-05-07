@@ -68,12 +68,11 @@ CREATE TABLE alternativa(
 CREATE TABLE resposta_usuario(
 	id_resposta INT PRIMARY KEY AUTO_INCREMENT,
     fk_usuario INT, 
-    fk_questao INT,
     fk_alternativa INT,
     CONSTRAINT cFk_RespostaUsuario_fk_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario),
-    CONSTRAINT cFk_RespostaUsuario_fk_questao FOREIGN KEY (fk_questao) REFERENCES questao(id_questao),
     CONSTRAINT cFk_RespostaUsuario_fk_alternativa FOREIGN KEY (fk_alternativa) REFERENCES alternativa(id_alternativa)
 );
+
 
 /*
 Web-dat-vis Schema
