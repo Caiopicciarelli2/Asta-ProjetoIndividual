@@ -242,3 +242,14 @@ if (validar_sessao_historia == 'user') {
         container_perfil_user.style.display = 'none';
     })
 }
+
+
+// cards linha temporal click
+
+let cards_linhaTemporal_historia = document.querySelectorAll('.box-lT');
+
+cards_linhaTemporal_historia.forEach(cards => {
+    cards.addEventListener('click', () => {
+        window.location = "https://www.crunchyroll.com/pt-br/series/GRE50KV36/black-clover?srsltid=AfmBOoqyx3fzwI0JyqcEuOAgmQgXRZseOs7cSv97M24ULYo6FlLayrIo";
+    });
+});
