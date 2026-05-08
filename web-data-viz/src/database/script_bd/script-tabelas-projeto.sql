@@ -34,6 +34,9 @@ CREATE TABLE usuario(
     CONSTRAINT cFk_Usuario_fk_permissao FOREIGN KEY (fk_permissao) REFERENCES permissao(id_permissao)
 );
 
+INSERT INTO usuario (nome, cpf, email, senha, fk_permissao) VALUES
+    ('Administrador', '12345678910', 'caio_admin@email.com', '191012', 1);
+
 /*
 Quiz Schema
 */
