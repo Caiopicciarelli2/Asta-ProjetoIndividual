@@ -772,14 +772,16 @@ body {
 
 .container-linhaTemporal-title{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     height: 10%;
     width: 100%;
+
+    gap: 1vw;
 }
 
 .container-linhaTemporal-title img{
-    height: 60px;
+    height: 40px;
 }
 
 .container-linhaTemporal-title h1 {
@@ -792,9 +794,6 @@ body {
     gap: 1.5vw;
 
     font-size: 3rem;
-
-    text-decoration: underline #b110104d;
-    text-underline-offset: 15px;
 }
 
 .content-linhaTemporal{
@@ -802,7 +801,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 85%;
+    height: 80%;
     width: 100%;
 }
 
@@ -912,4 +911,366 @@ body {
     background-image: url('../assets/imagens/historia-personagens.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+}
+
+.container-personagens-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 90%;
+    height: 15%;
+}
+
+.container-personagens-title h1{
+    margin: 0;
+    padding: 0;
+
+    font-size: 3.5rem;
+}
+
+.container-personagens-title h1 span{
+    font-family: var(--font-blackcover);
+    color: var(--astaD-color1);
+}
+
+.content-personagens{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+    height: 85%;
+
+    overflow: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #8b0000 transparent;
+}
+
+.content-personagens-filtros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    width: 95%;
+    height: 15%;
+}
+
+.content-personagens-filtros button{
+    padding: 0.7rem 3rem;
+    border-radius: 10px;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+    
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.content-personagens-filtros button:hover{
+    background-color: var(--astaD-color1);
+}
+
+.btn_filtro.active{
+    background-color: var(--astaD-color1);
+}
+
+.content-personagens-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1vw;
+
+    width: 95%;
+    height: 70%;
+
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.p-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 15%;
+    height: 50%;
+
+    position: relative;
+
+    background-image: url('../assets/imagens/historia-linhaTemporal-card.png');
+    background-size: 100% 100%;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    border: 4px solid rgba(0, 0, 0, 0);
+}
+
+.p-card:hover{
+    border: 4px solid rgba(0, 0, 0, 0.4);
+}
+
+.p-card-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 98%;
+
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.p-card-image img{
+    height: 100%;
+}
+
+.p-card span{
+    position: absolute;
+    top: 5%;
+    left: 6%;
+
+    height: 15%;
+    width: 15%;
+
+    background-color: rgb(0, 0, 0);
+    border-radius: 7px;
+}
+
+.clover span{
+    background-image: url('../assets/icones/clover.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 80%;
+}
+
+.touros span{
+    background-image: url('../assets/icones/touros_negros.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 80%;
+}
+
+.vilao span{
+    background-image: url('../assets/icones/olho_soL.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80% 80%;
+}
+
+
+.clover .p-card-image{
+    background-image: url('../assets/imagens/card-vila-hage.png');
+    background-size: 100% 100%;
+}
+
+.touros .p-card-image{
+    background-image: url('../assets/imagens/card-touros-negros.png');
+    background-size: 100% 100%;
+}
+
+.vilao .p-card-image{
+    background-image: url('../assets/imagens/inimigo_card.png');
+    background-size: 100% 100%;
+}
+
+.p-card-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 48%;
+    width: 99%;
+}
+
+.p-card-title h2{
+    padding: 0;
+    margin: 0;
+
+    height: 20%;
+
+    font-size: 1.2rem;
+}
+
+.p-card-title p{
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    height: 50%;
+    width: 80%;
+
+    font-size: 0.8rem;
+}
+
+.content-personagens-mensagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    width: 95%;
+    height: 10%;
+}
+
+/*section esquadrões*/
+
+.container-esquadroes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 90vh;
+
+    background-image: url('../assets/imagens/historia-esquadroes.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.container-esq-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    width: 90%;
+    height: 10%;
+}
+
+.container-esq-title h1{
+    font-size: 3rem;
+}
+
+.container-esq-title img{
+    height: 40px;
+}
+
+.content-esq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 90%;
+    height: 80%;
+}
+
+.content-esq-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+
+    width: 100%;
+    height: 50%;
+}
+
+.esq-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 17%;
+    height: 90%;
+    border-radius: 5px;
+
+    background-image: url('../assets/imagens/historia_esquadroes_card.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.esq-card:hover{
+    transform: scale(0.98);
+}
+
+.esq-card-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 10%;
+}
+
+.esq-card-title h1{
+    font-size: 1.6rem;
+}
+
+.esq-card-conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 90%;
+    height: 50%;
+}
+
+.esq-card-conteudo img{
+    height: 130px;
+}
+
+.esq-card-conteudo p{
+    text-align: justify;
+    width: 40%;
+
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.esq-card-text{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100%;
+    height: 30%;
+
+    gap: 1vw;
+}
+
+.esq-card-text-left, .esq-card-text-right{
+    display: flex;
+    height: 65%;
+    width: 30%;
+}
+
+.esq-card-text-left{
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.esq-card-text-left h4{
+    margin: 0;
+    padding: 0;
+
+    color: var(--astaD-color1);
+}
+
+.esq-card-text-left h5{
+    margin: 0;
+    padding: 0;
+}
+
+.esq-card-text-right{
+    align-items: center;
+    justify-content: center;
+}
+
+.esq-card-text-right img{
+    height: 100%;
 }

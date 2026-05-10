@@ -108,7 +108,8 @@
             <div class="content-intro-top">
                 <div class="content-intro-title">
                     <img src="./assets/icones/logo_nav_2.png" alt="logo_nav_2">
-                    <h1>O UNIVERSO DE
+                    <h1>
+                        O UNIVERSO DE
                         <span>BLACK CLOVER</span>
                     </h1>
                     <img src="./assets/icones/logo_nav_2.png" alt="logo_nav_2">
@@ -251,11 +252,11 @@
     <section>
         <div class="container-linhaTemporal">
             <div class="container-linhaTemporal-title">
-                <img src="./assets/icones/logo_nav_2.png" alt="logo_nav_2">
+                <img src="./assets/icones/logo.png" alt="logo.png">
                 <h1>
                     LINHA DO TEMPO
                 </h1>
-                <img src="./assets/icones/logo_nav_2.png" alt="logo_nav_2">
+                <img src="./assets/icones/logo.png" alt="logo.png">
             </div>
             <div class="content-linhaTemporal">
                 <div class="content-lT-top">
@@ -356,7 +357,7 @@
                             <h6>Season 3 | EP 102-129</h6>
                         </div>
                         <div class="box-lT-image">
-                            <img src="./assets/imagens/arco_treinamento.webp" alt="image_card">
+                            <img src="./assets/imagens/asta_horizontal2.jpg" alt="image_card">
                         </div>
                         <div class="box-lT-text">
                             <h4>ARCO TREINAMENTO</h4>
@@ -396,56 +397,418 @@
     <section>
         <div class="container-personagens">
             <div class="container-personagens-title">
-                <div class="c-p-title">
-
-                </div>
-                <div class="c-p-divisao">
-
-                </div>
-                <div class="c-p-text">
-
-                </div>
+                <h1>
+                    PERSONAGENS DE <span>BLACK CLOVER</span>
+                </h1>
             </div>
             <div class="content-personagens">
                 <div class="content-personagens-filtros">
-                    <button onclick="filtroPerso_todos()">TODOS</button>
+                    <button id="filtro_todos" class="btn_filtro active"
+                        onclick="filtro_personagens('todos', 'filtro_todos')">TODOS</button>
 
-                    <button onclick="filtroPerso_tourosNegros()">TOUROS</button>
+                    <button id="filtro_touros" class="btn_filtro"
+                        onclick="filtro_personagens('touros', 'filtro_touros')">TOUROS NEGROS</button>
 
-                    <button onclick="filtroPerso_capitoes()">CAPITÃES</button>
-                    
-                    <button onclick="filtroPerso_clover()">REINO CLOVER</button>
+                    <button id="filtro_capitao" class="btn_filtro"
+                        onclick="filtro_personagens('capitao', 'filtro_capitao')">CAPITÃES</button>
 
-                    <button onclick="filtroPerso_viloes()">VILÕES</button>
+                    <button id="filtro_clover" class="btn_filtro"
+                        onclick="filtro_personagens('clover', 'filtro_clover')">REINO CLOVER</button>
+
+                    <button id="filtro_vilao" class="btn_filtro"
+                        onclick="filtro_personagens('vilao', 'filtro_vilao')">VILÕES</button>
                 </div>
                 <div class="content-personagens-cards">
-                    <div class="content-p-cards-row">
-                        <div class="p-card touros clover"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
+                    <div class="p-card touros clover" title="Asta">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/asta-cards.png" alt="asta_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Asta</h2>
+                            <p>
+                                Sem magia, mas com
+                                anti-magia e um grimono
+                                de 5 folhas.
+                            </p>
+                        </div>
                     </div>
-                    <div class="content-p-cards-row">
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
+                    <div class="p-card clover" title="Yuno">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/yuno-cards.png" alt="yuno_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Yuno</h2>
+                            <p>
+                                Prodigio com imenso poder mágico e grimório de 4 folhas.
+                            </p>
+                        </div>
                     </div>
-                    <div class="content-p-cards-row">
-                         <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
-                        <div class="p-card"></div>
+                    <div class="p-card touros" title="Noelle Silva">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/noelle-cards.png" alt="noelle_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Noelle Silva</h2>
+                            <p>
+                                Nobre da familia Silva que superou seus limites para se tornar mais forte.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card touros capitao" title="Yami Sukehiro">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/yami-cards.png" alt="Yumi_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Yami Sukehiro</h2>
+                            <p>
+                                Capitão do Touro Negro, mestre da escuridão e um dos mais fortes do reino.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card clover" title="Julius Novachrono">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/julius.png" alt="julius_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Julius Novachrono</h2>
+                            <p>
+                                O mais poderoso dos Cavaleiros Mágicos e lider do Reino Clover.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card clover capitao">
+                        <span>
+
+                        </span>
+                        <div class="p-card-image" title="Mereoleona Vermillion">
+                            <img src="./assets/imagens/Mereoleona.png" alt="mareoleona_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Mereoleona Vermillion</h2>
+                            <p>
+                                Capitã destemida conhecida como a mais forte entre os Cavaleiros Mágicos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card capitao clover" title="Charlotte Roselei">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/charlotte.png" alt="charlotte_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Charlotte Roselei</h2>
+                            <p>
+                                Capitä elegante que utiliza magia de manipulação de rosa.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card capitao clover" title="Fuegoleon Vermillion">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/fuegoleon.png" alt="fuegoleon_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Fuegoleon Vermillion</h2>
+                            <p>
+                                Principe do Reino Clover e usuário da poderosa Magia do Fogo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card touros clover" title="Finral Roulacase">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/finral-cards.png" alt="finral_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Finral Roulacase</h2>
+                            <p>
+                                Mago estratégico que usa magia espacial para apoiar seus companheiros.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card touros clover" title="Vanessa Enoteca">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/vanessa-cards.png" alt="vanessa_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Vanessa Enoteca</h2>
+                            <p>
+                                Bruixa encantadora que usa magia do fio vermelho do destino.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card touros clover" title="Luck Voltia">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/luck-cards.png" alt="luck_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Luck Voltia</h2>
+                            <p>
+                                Usuário de magia do raio com personalidade impulsiva e leal.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card touros clover" title="Magna Swing">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/magna-cards.png" alt="magna_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Magna Swing</h2>
+                            <p>
+                                Mago do fogo que luta com determinação pelo sonho de todos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-card vilao" title="Dante Zogratis">
+                        <span></span>
+                        <div class="p-card-image">
+                            <img src="./assets/imagens/dante.png" alt="dante_image">
+                        </div>
+                        <div class="p-card-title">
+                            <h2>Dante Zogratis</h2>
+                            <p>
+                                Líder dos Olhos do Sol da Meia-Noite e um dos mais fortes elfos sombrios reencarnados.
+                            </p>
+                        </div>
                     </div>
                 </div>
+
                 <div class="content-personagens-mensagem">
 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-esquadroes">
+            <div class="container-esq-title">
+                <img src="./assets/icones/logo.png" alt="logo.png">
+                <h1>ESQUADRÕES MÁGICOS</h1>
+                <img src="./assets/icones/logo.png" alt="logo.png">
+            </div>
+            <div class="content-esq">
+                <div class="content-esq-row">
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>TOUROS NEGROS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/touros_negros.webp" alt="touros_image">
+                            <p>
+                                Conhecidos por sua força bruta e determinação inabalável.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Yami Sukehiro</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/yami-cards.png" alt="yami_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>ÁGUIA PRATEADA</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/aguias.webp" alt="aguias_image">
+                            <p>
+                                Orgulhosos e nobres, prezam pela ordem e disciplinha.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Noel Silva</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/noel.png" alt="noel_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>ROSA AZUL</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/rosas.webp" alt="rosas_image">
+                            <p>
+                                A beleza e o poder se unem em defesa do reino.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Charlotte Roselei</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/charlotte.png" alt="charlotte_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>LEÕES CARMESINS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/leoes.webp" alt="leoes_image">
+                            <p>
+                                Lideres natos que lutam com coragem e estratégia.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Fuegoleon Vermillion</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/fuegoleon.png" alt="fuegoleon_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>CERVO CIANO</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/cervo.webp" alt="cervo_image">
+                            <p>
+                                Calmos e observadores, guiados pela razão.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Rill Boismortier</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/rill.png" alt="rill_image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-esq-row">
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>ORCAS PÚRPURAS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/orcas.webp" alt="orcas_image">
+                            <p>
+                                Movem-se nas sombras para cumprir suas missões.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Gueldre Poizot</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/Gueldre.png" alt="Gueldre_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>TOUROS NEGROS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/touros_negros.webp" alt="">
+                            <p>
+                                Conhecidos por sua força bruta e determinação inabalável.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Yami Sukehiro</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/yami-cards.png" alt="yami_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>TOUROS NEGROS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/touros_negros.webp" alt="">
+                            <p>
+                                Conhecidos por sua força bruta e determinação inabalável.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Yami Sukehiro</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/yami-cards.png" alt="yami_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>TOUROS NEGROS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/touros_negros.webp" alt="">
+                            <p>
+                                Conhecidos por sua força bruta e determinação inabalável.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Yami Sukehiro</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/yami-cards.png" alt="yami_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="esq-card">
+                        <div class="esq-card-title">
+                            <h1>TOUROS NEGROS</h1>
+                        </div>
+                        <div class="esq-card-conteudo">
+                            <img src="./assets/icones/touros_negros.webp" alt="">
+                            <p>
+                                Conhecidos por sua força bruta e determinação inabalável.
+                            </p>
+                        </div>
+                        <div class="esq-card-text">
+                            <div class="esq-card-text-left">
+                                <h4>CAPITÃO</h4>
+                                <h5>Yami Sukehiro</h5>
+                            </div>
+                            <div class="esq-card-text-right">
+                                <img src="./assets/imagens/yami-cards.png" alt="yami_image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
