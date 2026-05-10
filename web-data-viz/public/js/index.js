@@ -261,5 +261,13 @@ cards_personagens_home.forEach(cards => {
     });
 });
 
+let cards_personagens_home2 = document.querySelectorAll('.card-personagens-2');
+
+cards_personagens_home2.forEach(cards => {
+    cards.addEventListener('click', () => {
+        window.location = "../historia.html";
+    });
+});
+
 
 

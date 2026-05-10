@@ -13,7 +13,7 @@ if (validar_sessao_historia == 'user') {
     // linkando os elementos html da page INDEX
     let ul_navLinks = document.getElementById('nav-links-ul');
     let div_navButtons = document.getElementById('nav-buttons');
-    // let ul_footerLinks = document.getElementById('footer-links-ul');
+    let ul_footerLinks = document.getElementById('footer-links-ul');
     let container_perfilUser = document.getElementById('perfil-user');
 
     // mudando o comportamento da navbar, após o usuário logar ele consegue navegador por todas as páginas
@@ -80,29 +80,27 @@ if (validar_sessao_historia == 'user') {
             </div>
         `;
 
-    // removendo a section de logar
-    // container_sectionLogar.style.display = 'none';
 
-    // //mudando o comportamento do footer
-    // ul_footerLinks.innerHTML =
-    //     `
-    //             <li>
-    //                 <a href="./historia.html">
-    //                     História
-    //                 </a>
-    //                 <a href="./quiz.html">
-    //                     Quiz
-    //                 </a>
-    //             </li>
-    //             <li>
-    //                 <a href="./placar.html">
-    //                     Placar
-    //                 </a>
-    //                 <a href="./status.html">
-    //                     Seu Status
-    //                 </a>
-    //             </li>
-    //     `;
+    //mudando o comportamento do footer
+    ul_footerLinks.innerHTML =
+        `
+                <li>
+                    <a href="./historia.html">
+                        História
+                    </a>
+                    <a href="./quiz.html">
+                        Quiz
+                    </a>
+                </li>
+                <li>
+                    <a href="./placar.html">
+                        Placar
+                    </a>
+                    <a href="./status.html">
+                        Seu Status
+                    </a>
+                </li>
+        `;
 
     // lógica do perfil
     let container_perfil_user = document.getElementById('perfil-user');
@@ -131,7 +129,7 @@ if (validar_sessao_historia == 'user') {
     // linkando os elementos html da page INDEX
     let ul_navLinks = document.getElementById('nav-links-ul');
     let div_navButtons = document.getElementById('nav-buttons');
-    // let ul_footerLinks = document.getElementById('footer-links-ul');
+    let ul_footerLinks = document.getElementById('footer-links-ul');
     let container_perfilUser = document.getElementById('perfil-user');
 
     // mudando o comportamento da navbar, após o usuário logar ele consegue navegador por todas as páginas
@@ -199,29 +197,26 @@ if (validar_sessao_historia == 'user') {
             </div>
         `;
 
-    // removendo a section de logar
-    // container_sectionLogar.style.display = 'none';
-
-    // //mudando o comportamento do footer
-    // ul_footerLinks.innerHTML =
-    //     `
-    //             <li>
-    //                 <a href="./historia.html">
-    //                     História
-    //                 </a>
-    //                 <a href="./quiz.html">
-    //                     Quiz
-    //                 </a>
-    //             </li>
-    //             <li>
-    //                 <a href="./placar.html">
-    //                     Placar
-    //                 </a>
-    //                 <a href="./status.html">
-    //                     Seu Status
-    //                 </a>
-    //             </li>
-    //     `;
+    //mudando o comportamento do footer
+    ul_footerLinks.innerHTML =
+        `
+                <li>
+                    <a href="./historia.html">
+                        História
+                    </a>
+                    <a href="./quiz.html">
+                        Quiz
+                    </a>
+                </li>
+                <li>
+                    <a href="./placar.html">
+                        Placar
+                    </a>
+                    <a href="./status.html">
+                        Seu Status
+                    </a>
+                </li>
+        `;
 
     // lógica do perfil
     let container_perfil_user = document.getElementById('perfil-user');
@@ -255,161 +250,6 @@ cards_linhaTemporal_historia.forEach(cards => {
 });
 
 // filtros personagens
-
-// function filtroPerso_todos() {
-//     // todos cards 
-//     let cards_tag_todos = document.querySelectorAll('.p-card');
-//     // btn filtro 
-//     let btn_filtro_todos = document.getElementById('filtro_todos');
-//     // todos os botoes de filtro
-//     let btns_filtro = document.querySelectorAll('.btn_filtro');
-
-//     // faz todos os cards aparecerem
-//     cards_tag_todos.forEach(function (card) {
-//         card.style.display = 'flex';
-//     });
-
-//     // faz todos os botões ficarem sem o background acionado
-//     btns_filtro.forEach(function (botao) {
-//         botao.classList.remove("active");
-//         botao.classList.add("inative");
-//     });
-
-//     // faz o botão de filtro todos ficar com o background acionado
-//     btn_filtro_todos.classList.add("active");
-// }
-
-// function filtroPerso_tourosNegros() {
-//     // todos cards 
-//     let cards_tag_todos = document.querySelectorAll('.p-card');
-
-//     // todos os cards dos touros negros
-//     let cards_tag_touros = document.querySelectorAll('.touros');
-
-//     // btn filtro
-//     let btn_filtro_touros = document.getElementById('filtro_touros');
-
-//     // todos os botoes de filtro
-//     let btns_filtro = document.querySelectorAll('.btn_filtro');
-
-//     // faz todos os cards aparecerem
-//     cards_tag_todos.forEach(function (card) {
-//         card.style.display = 'none';
-//     });
-
-//     // faz todos os cards touros aparecerem
-//     cards_tag_touros.forEach(function (card) {
-//         card.style.display = 'flex';
-//     });
-
-//     // faz todos os botões ficarem sem o background acionado
-//     btns_filtro.forEach(function (botao) {
-//         botao.classList.remove("active");
-//         botao.classList.add("inative");
-//     });
-
-//     // faz o botão de filtro touros ficar com o background acionado
-//     btn_filtro_touros.classList.add("active");
-// }
-
-// function filtroPerso_capitoes() {
-//     // todos cards 
-//     let cards_tag_todos = document.querySelectorAll('.p-card');
-
-//     // todos os cards dos capitães
-//     let cards_tag_capitao = document.querySelectorAll('.capitao');
-
-//     // btn filtro
-//     let btn_filtro_capitao = document.getElementById('filtro_capitao');
-
-//     // todos os botoes de filtro
-//     let btns_filtro = document.querySelectorAll('.btn_filtro');
-
-//     // faz todos os cards aparecerem
-//     cards_tag_todos.forEach(function (card) {
-//         card.style.display = 'none';
-//     });
-
-//     // faz todos os cards capitões aparecerem
-//     cards_tag_capitao.forEach(function (card) {
-//         card.style.display = 'flex';
-//     });
-
-//     // faz todos os botões ficarem sem o background acionado
-//     btns_filtro.forEach(function (botao) {
-//         botao.classList.remove("active");
-//         botao.classList.add("inative");
-//     });
-
-//     // faz o botão de filtro capitao ficar com o background acionado
-//     btn_filtro_capitao.classList.add("active");
-// }
-
-// function filtroPerso_clover() {
-//     // todos cards 
-//     let cards_tag_todos = document.querySelectorAll('.p-card');
-
-//     // todos os cards do reino clover
-//     let cards_tag_clover = document.querySelectorAll('.clover');
-
-//     // btn filtro
-//     let btn_filtro_clover = document.getElementById('filtro_clover');
-
-//     // todos os botoes de filtro
-//     let btns_filtro = document.querySelectorAll('.btn_filtro');
-
-//     // faz todos os cards aparecerem
-//     cards_tag_todos.forEach(function (card) {
-//         card.style.display = 'none';
-//     });
-
-//     // faz todos os cards clover aparecerem
-//     cards_tag_clover.forEach(function (card) {
-//         card.style.display = 'flex';
-//     });
-
-//     // faz todos os botões ficarem sem o background acionado
-//     btns_filtro.forEach(function (botao) {
-//         botao.classList.remove("active");
-//         botao.classList.add("inative");
-//     });
-
-//     // faz o botão de filtro todos ficar com o background acionado
-//     btn_filtro_clover.classList.add("active");
-// }
-
-// function filtroPerso_viloes() {
-//     // todos cards 
-//     let cards_tag_todos = document.querySelectorAll('.p-card');
-
-//     // todos os cards dos vilões
-//     let cards_tag_vilao = document.querySelectorAll('.vilao');
-
-//     // btn filtro
-//     let btn_filtro_vilao = document.getElementById('filtro_vilao');
-
-//     // todos os botoes de filtro
-//     let btns_filtro = document.querySelectorAll('.btn_filtro');
-
-//     // faz todos os cards aparecerem
-//     cards_tag_todos.forEach(function (card) {
-//         card.style.display = 'none';
-//     });
-
-//     // faz todos os cards vilão aparecerem
-//     cards_tag_vilao.forEach(function (card) {
-//         card.style.display = 'flex';
-//     });
-
-//     // faz todos os botões ficarem sem o background acionado
-//     btns_filtro.forEach(function (botao) {
-//         botao.classList.remove("active");
-//         botao.classList.add("inative");
-//     });
-
-//     // faz o botão de filtro todos ficar com o background acionado
-//     btn_filtro_vilao.classList.add("active");
-// }
 
 // tentando simplificar o código
 function filtro_personagens(class_card, id_botao){

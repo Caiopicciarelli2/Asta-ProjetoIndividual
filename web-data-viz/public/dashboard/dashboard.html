@@ -6,58 +6,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asta - Dashboard</title>
+    <title>Asta - Admin </title>
 
 
-    <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="stylesheet" href="./css/cards.css">
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
+<!--onload(validarSessao(), exibirAquarios(),  atualizacaoPeriodica())-->
 
 <body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <h1>
+                    Black
+                </h1>
+                <img src="../assets/icones/logo.png" alt="logo_nav">
+                <h1>Cover</h1>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
+            <div class="nav-links">
+                <ul id="nav-links-ul">
+                    <li>
+                        <a href="../index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a class="selected" href="../index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./mural.html">
+                            Mural de Avisos
+                        </a>
+                    </li>
+                </ul>
             </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
+            <div class="nav-buttons" id="nav-buttons">
+                <img src="../assets/icones/user-asta.png" alt="icone_asta" title="Clique para ver seu perfil."
+                    id="btn-icone-perfil">
+            </div>
+            <div class="container-perfil" id="perfil-user">
 
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
 
         <div class="dash">
@@ -70,8 +69,7 @@
             <div id="graficos">
             </div>
         </div>
-    </div>
-
+    </header>
 
 </body>
 </html>
