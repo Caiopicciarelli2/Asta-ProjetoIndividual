@@ -9,7 +9,7 @@
     <title>Asta - Admin </title>
 
 
-    <link rel="stylesheet" href="./css/cards.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
 
@@ -19,9 +19,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<!--onload(validarSessao(), exibirAquarios(),  atualizacaoPeriodica())-->
 
-<body>
+<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
     <header>
         <div class="navbar">
             <div class="nav-logo">
@@ -39,7 +38,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="selected" href="../index.html">
+                        <a class="selected" href="./dashboard.html">
                             Dashboard
                         </a>
                     </li>
@@ -61,12 +60,11 @@
 
         <div class="dash">
             <div id="alerta">
+                
             </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
             <div id="graficos">
+
             </div>
         </div>
     </header>

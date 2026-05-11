@@ -30,6 +30,7 @@ CREATE TABLE usuario(
     cpf CHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100),
     senha VARCHAR(50) NOT NULL,
+    dt_cadastro DATETIME,
     fk_permissao INT DEFAULT 2,
     CONSTRAINT cFk_Usuario_fk_permissao FOREIGN KEY (fk_permissao) REFERENCES permissao(id_permissao)
 );
@@ -44,10 +45,19 @@ Quiz Schema
 CREATE TABLE quiz(
 	id_quiz INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
-    descrisao VARCHAR(250),
+    descricao VARCHAR(250),
     qtd_questoes INT,
     dt_atualizacao DATETIME,
-    CONSTRAINT c_Check_Quiz_qtd_descrisao CHECK (qtd_questoes BETWEEN 0 AND 10)
+    CONSTRAINT c_Check_Quiz_qtd_questoes CHECK (qtd_questoes BETWEEN 0 AND 10)
+);
+
+CREATE TABLE resultado(
+    id_resultado INT PRIMARY KEY AUTO_INCREMENT,
+    pontuacao INT,
+    fk_usuario INT,
+    fk_quiz INT,
+    CONSTRAINT cFk_Resultado_fk_usuario FOREIGN KEY (fk_usuario) REFERENCES usuario(id_usuario),
+    CONSTRAINT cFk_Resultado_fk_quiz FOREIGN KEY (fk_quiz) REFERENCES quiz(id_quiz)
 );
 
 CREATE TABLE questao(
@@ -90,4 +100,3 @@ CREATE TABLE aviso (
 );
 
 
-
