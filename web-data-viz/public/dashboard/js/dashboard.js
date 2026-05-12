@@ -1,3 +1,5 @@
+/*validar sessão*/
+
 let validar_sessao_historia = validarSessao();
 
 if (validar_sessao_historia == 'user') {
@@ -72,31 +74,28 @@ if (validar_sessao_historia == 'user') {
     window.location = "../index.html";
 }
 
-
-
-
-
+/*dash*/
 
 let proximaAtualizacao;
 
-window.onload = exibirAquariosDoUsuario();
+window.onload =  exibirGraficoGeral();
 
-function exibirAquariosDoUsuario() {
-        document.getElementById("graficos").innerHTML = `
-                <div id="grafico">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario">Gráfico Geral</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-        obterDadosGrafico();
+function exibirGraficoGeral() {
+    document.getElementById("graficos").innerHTML = 
+    `
+        <div id="grafico">
+            <h3 class="tituloGraficos" style="color: white;">
+                <span id="tituloAquario">Gráfico Geral</span>
+            </h3>
+            <div class="graph">
+                <canvas id="myChartCanvas"></canvas>
+            </div>
+            <div class="label-captura">
+                <p id="avisoCaptura" style="color: white"></p>
+            </div>
+        </div>
+    `
+    obterDadosGrafico();
 }
 
 // O gráfico é construído com três funções:
@@ -195,7 +194,7 @@ function plotarGrafico(resposta) {
         config
     );
 
-    setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+    setTimeout(() => atualizarGrafico(dados, myChart), 10000);
 }
 
 
@@ -212,8 +211,6 @@ function atualizarGrafico(dados, myChart) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
-                obterdados();
-                // alertar(novoRegistro);
                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                 console.log(`Dados atuais do gráfico:`);
                 console.log(dados);
@@ -223,14 +220,14 @@ function atualizarGrafico(dados, myChart) {
 
 
                 if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                    console.log("---------------------------------------------------------------")
-                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                    avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                    console.log("Horário do novo dado capturado:")
-                    console.log(novoRegistro[0].momento_grafico)
-                    console.log("Horário do último dado capturado:")
-                    console.log(dados.labels[dados.labels.length - 1])
-                    console.log("---------------------------------------------------------------")
+                    // console.log("---------------------------------------------------------------")
+                    // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    // console.log("Horário do novo dado capturado:")
+                    // console.log(novoRegistro[0].momento_grafico)
+                    // console.log("Horário do último dado capturado:")
+                    // console.log(dados.labels[dados.labels.length - 1])
+                    // console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro

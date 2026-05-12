@@ -30,7 +30,7 @@ CREATE TABLE usuario(
     cpf CHAR(11) NOT NULL UNIQUE,
     email VARCHAR(100),
     senha VARCHAR(50) NOT NULL,
-    dt_cadastro DATETIME,
+    dt_cadastro DATETIME DEFAULT NOW(),
     fk_permissao INT DEFAULT 2,
     CONSTRAINT cFk_Usuario_fk_permissao FOREIGN KEY (fk_permissao) REFERENCES permissao(id_permissao)
 );

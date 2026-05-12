@@ -5,15 +5,14 @@ function buscarUltimasMedidas(limite_linhas) {
     var instrucaoSql = 
     `
         SELECT 
-            DATE_FORMAT(u.dt_cadastro, '%H:%i:%s') AS momento_grafico,
+            DATE_FORMAT(u.dt_cadastro, '%d/%m') AS momento_grafico,
             COUNT(DISTINCT u.id_usuario) AS qtd_usuarios,
-            COUNT(r.id_resultado) AS qtd_quiz
-        FROM usuario AS u
-            LEFT JOIN resultado AS r
+            COUNT(DISTINCT r.id_resultado) AS qtd_quiz
+        FROM usuario u
+            LEFT JOIN resultado r
                 ON u.id_usuario = r.fk_usuario
-        GROUP BY momento_grafico
-        ORDER BY momento_grafico DESC
-        LIMIT ${limite_linhas};
+        GROUP BY DATE_FORMAT(u.dt_cadastro, '%d/%m')
+        ORDER BY DATE_FORMAT(u.dt_cadastro, '%d/%m') DESC LIMIT ${limite_linhas};
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -24,12 +23,14 @@ function buscarMedidasEmTempoReal() {
 
     var instrucaoSql = `
         SELECT 
-            DATE_FORMAT(u.dt_cadastro, '%y%d/%m %H:%i') AS momento_grafico,
+            DATE_FORMAT(u.dt_cadastro, '%d/%m') AS momento_grafico,
             COUNT(DISTINCT u.id_usuario) AS qtd_usuarios,
-            COUNT(r.id_resultado) AS qtd_quiz
-        FROM usuario AS u
-            LEFT JOIN resultado AS r
-                ON u.id_usuario = r.fk_usuario;
+            COUNT(DISTINCT r.id_resultado) AS qtd_quiz
+        FROM usuario u
+            LEFT JOIN resultado r
+                ON u.id_usuario = r.fk_usuario
+        GROUP BY DATE_FORMAT(u.dt_cadastro, '%d/%m')
+        ORDER BY DATE_FORMAT(u.dt_cadastro, '%d/%m') DESC LIMIT 1;
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
