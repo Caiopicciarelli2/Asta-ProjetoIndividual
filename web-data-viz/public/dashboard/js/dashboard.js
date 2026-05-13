@@ -83,20 +83,21 @@ window.onload = exibirGraficoGeralSemanal(), exibirGraficoGeralMensal();
 function exibirGraficoGeralSemanal() {
     let id_grafico = `semanal`;
 
-    document.getElementById(`graficos-${id_grafico}`).innerHTML =
+    document.getElementById(`graficos`).innerHTML +=
         `
         <div id="grafico-${id_grafico}">
-            <h3 class="tituloGraficos" style="color: white;">
-                <span id="tituloGrafico">Gráfico Geral Semanal</span>
+            <h3 class="tituloGraficos" style="color: black;">
+                <span id="tituloGrafico">Gráfico Geral Diário</span>
             </h3>
             <div class="graph">
                 <canvas id="myChartCanvas-${id_grafico}"></canvas>
             </div>
-            <div class="label-captura">
-                <p id="avisoCaptura" style="color: white"></p>
-            </div>
         </div>
     `
+
+            //     <div class="label-captura">
+            //     <p id="avisoCaptura" style="color: black"></p>
+            // </div>
 
     obterDadosGrafico(id_grafico);
 }
@@ -104,20 +105,20 @@ function exibirGraficoGeralSemanal() {
 function exibirGraficoGeralMensal() {
     let id_grafico = `mensal`;
 
-    document.getElementById(`graficos-${id_grafico}`).innerHTML =
+    document.getElementById(`graficos`).innerHTML +=
         `
         <div id="grafico-${id_grafico}">
-            <h3 class="tituloGraficos" style="color: white;">
+            <h3 class="tituloGraficos" style="color: black;">
                 <span id="tituloGrafico">Gráfico Geral Mensal</span>
             </h3>
             <div class="graph">
                 <canvas id="myChartCanvas-${id_grafico}"></canvas>
             </div>
-            <div class="label-captura">
-                <p id="avisoCaptura" style="color: white"></p>
-            </div>
         </div>
     `
+        // < div class="label-captura" >
+        //     <p id="avisoCaptura" style="color: white"></p>
+        //     </div >
 
     obterDadosGrafico(id_grafico);
 }
@@ -182,8 +183,8 @@ function plotarGrafico(resposta, id_grafico) {
         {
             label: 'Quiz',
             data: [],
-            backgroundColor: '#fff',
-            borderColor: '#fff',
+            backgroundColor: '#000000',
+            borderColor: '#000000',
             borderWidth: 2,
             minBarLength: 5,
             borderRadius: 10
@@ -210,20 +211,38 @@ function plotarGrafico(resposta, id_grafico) {
     console.log(dados.datasets)
     console.log('----------------------------------------------')
 
+    let config;
+
     // Criando estrutura para plotar gráfico - config
-    const config = {
-        type: 'bar',
-        data: dados,
-        options: {
-            scales: {
-                y: {
-                    ticks: {
-                        precision: 0
+    if (id_grafico == 'semanal') {
+        config = {
+            type: 'line',
+            data: dados,
+            options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            precision: 0
+                        }
                     }
                 }
             }
-        }
-    };
+        };
+    } else if (id_grafico == 'mensal') {
+        config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        };
+    }
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(
@@ -231,23 +250,38 @@ function plotarGrafico(resposta, id_grafico) {
         config
     );
 
+    // chamar KPIs
+    obterKPIs();
+
     setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
-
-    // kpis
-    let quantidade_usuario = 0;
-
-    for (let i = 0; i < resposta.length; i++) {
-        quantidade_usuario += resposta[i].qtd_usuarios;
-    }
-
-    let kpi_usuarios_semanal = document.getElementById('kpi-1');
-    kpi_usuarios_semanal.innerHTML =
-        `
-            <h1>${quantidade_usuario}</h1>
-            <span>Usuários cadastrados</span>
-        `;
 }
 
+function obterKPIs() {
+    fetch(`/dash/tempo-real/kpi`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (kpi) {
+                let kpi_usuarios_semanal_usuarios = document.getElementById('kpi-1');
+                kpi_usuarios_semanal_usuarios.innerHTML =
+                    `
+                        <h1>${kpi[0].qtd_usuario}</h1>
+                        <span>Usuários cadastrados</span>
+                    `;
+
+                let kpi_usuarios_semanal_quiz = document.getElementById('kpi-2');
+                kpi_usuarios_semanal_quiz.innerHTML =
+                    `
+                        <h1>${kpi[0].qtd_quiz}</h1>
+                        <span>Quiz feitos</span>
+                    `;
+            });
+        } else {
+            console.error('Nenhuma kpi encontrada ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das kpis p/ gráfico: ${error.message}`);
+        });
+}
 
 // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
 // buscando a última medida inserida em tabela contendo as capturas, 
@@ -278,14 +312,30 @@ function atualizarGrafico(dados, myChart, id_grafico) {
                     // console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].qtd_usuarios); // incluir uma nova 
 
-                    dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[1].data.push(novoRegistro[0].qtd_quiz); // incluir uma nova 
+                    if (id_grafico == 'semanal') {
+                        console.log("teste", novoRegistro[0].momento_grafico)
+
+                        dados.labels.shift(); // apagar a primeira data
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir nova data
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro usuario
+                        dados.datasets[0].data.push(novoRegistro[0].qtd_usuarios); // incluir um novo usuario
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro quiz
+                        dados.datasets[1].data.push(novoRegistro[0].qtd_quiz); // incluir um novo quiz
+                    } else if (id_grafico == 'mensal') {
+                        console.log("teste", novoRegistro[0].momento_grafico)
+                        dados.labels.shift(); // apagar a primeira data
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir nova data
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro usuario
+                        dados.datasets[0].data.push(novoRegistro[0].qtd_usuarios); // incluir um novo usuario
+
+                        dados.datasets[1].data.shift();  // apagar o primeiro quiz
+                        dados.datasets[1].data.push(novoRegistro[0].qtd_quiz); // incluir um novo quiz
+                    }
 
                     myChart.update();
                 }

@@ -40,7 +40,7 @@ function AtualizarDadosDashSemanal(req, res) {
 
 function buscarDadosDashMensal(req, res) {
 
-    const limite_linhas_Mensal = 30;
+    const limite_linhas_Mensal = 12;
 
     console.log(`Recuperando as ultimas ${limite_linhas_Mensal} medidas`);
 
@@ -74,9 +74,26 @@ function AtualizarDadosDashMensal(req, res) {
     });
 }
 
+function obterKPIs(req, res) {
+
+    // kpis
+    dashModel.obterKPIs().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarDadosDashSemanal,
     AtualizarDadosDashSemanal,
     buscarDadosDashMensal,
-    AtualizarDadosDashMensal
+    AtualizarDadosDashMensal,
+    obterKPIs
 }

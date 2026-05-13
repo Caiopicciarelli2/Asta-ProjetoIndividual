@@ -11,12 +11,17 @@ router.get("/tempo-real/geral-semanal", function (req, res) {
     dashController.AtualizarDadosDashSemanal(req, res);
 })
 
+
 router.get("/ultimas/geral-mensal", function (req, res) {
     dashController.buscarDadosDashMensal(req, res);
 });
 
 router.get("/tempo-real/geral-mensal", function (req, res) {
     dashController.AtualizarDadosDashMensal(req, res);
+})
+
+router.get("/tempo-real/kpi", function (req, res) {
+    dashController.obterKPIs(req, res);
 })
 
 module.exports = router;
