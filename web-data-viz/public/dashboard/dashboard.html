@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao(), exibirGraficoGeralSemanal(), exibirGraficoGeralMensal()">
     <header>
         <div class="navbar">
             <div class="nav-logo">
@@ -59,17 +59,51 @@
         </div>
 
         <div class="dash">
-            <!-- <div id="alerta">
+            <div class="dash-content">
+                <div class="dash-content-top">
+                    <h1>
+                        DAS
+                        <span>HBO</span>
+                        ARD
+                    </h1>
+                </div>
+                <div class="dash-content-bottom">
+                    <!-- <div id="alerta"></div> -->
+                    <div class="content-bottom-kpi">
+                        <div class="bottom-kpi-box" id="kpi-1">
 
-            </div> -->
+                        </div>
+                        <div class="bottom-kpi-box" id="kpi-2">
 
-            <div id="graficos">
+                        </div>
+                        <div class="bottom-kpi-box" id="kpi-3">
 
+                        </div>
+                        <div class="bottom-kpi-box" id="kpi-4">
+
+                        </div>
+                    </div>
+                    <div class="content-bottom-grafics">
+                        <div class="bottom-grafics-row">
+                            <div id="graficos-semanal">
+
+                            </div>
+
+                            <div id="graficos-mensal">
+
+                            </div>
+                        </div>
+                        <div class="bottom-grafics-row">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
 </body>
+
 </html>
 
 <script src="./js/dashboard.js"></script>

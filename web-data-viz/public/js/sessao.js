@@ -19,6 +19,7 @@ function validarSessao() {
 
     // se ele não estiver
     } else if (pagina_now == ('/quiz.html' || '/placar.html' || '/status.html' || 'dash.html')) {
+        alert("Você deve logar para acessar o quiz!");
         window.location = "../index.html";
     }
 }

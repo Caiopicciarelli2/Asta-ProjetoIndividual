@@ -78,24 +78,48 @@ if (validar_sessao_historia == 'user') {
 
 let proximaAtualizacao;
 
-window.onload =  exibirGraficoGeral();
+window.onload = exibirGraficoGeralSemanal(), exibirGraficoGeralMensal();
 
-function exibirGraficoGeral() {
-    document.getElementById("graficos").innerHTML = 
-    `
-        <div id="grafico">
+function exibirGraficoGeralSemanal() {
+    let id_grafico = `semanal`;
+
+    document.getElementById(`graficos-${id_grafico}`).innerHTML =
+        `
+        <div id="grafico-${id_grafico}">
             <h3 class="tituloGraficos" style="color: white;">
-                <span id="tituloAquario">Gráfico Geral</span>
+                <span id="tituloGrafico">Gráfico Geral Semanal</span>
             </h3>
             <div class="graph">
-                <canvas id="myChartCanvas"></canvas>
+                <canvas id="myChartCanvas-${id_grafico}"></canvas>
             </div>
             <div class="label-captura">
                 <p id="avisoCaptura" style="color: white"></p>
             </div>
         </div>
     `
-    obterDadosGrafico();
+
+    obterDadosGrafico(id_grafico);
+}
+
+function exibirGraficoGeralMensal() {
+    let id_grafico = `mensal`;
+
+    document.getElementById(`graficos-${id_grafico}`).innerHTML =
+        `
+        <div id="grafico-${id_grafico}">
+            <h3 class="tituloGraficos" style="color: white;">
+                <span id="tituloGrafico">Gráfico Geral Mensal</span>
+            </h3>
+            <div class="graph">
+                <canvas id="myChartCanvas-${id_grafico}"></canvas>
+            </div>
+            <div class="label-captura">
+                <p id="avisoCaptura" style="color: white"></p>
+            </div>
+        </div>
+    `
+
+    obterDadosGrafico(id_grafico);
 }
 
 // O gráfico é construído com três funções:
@@ -109,19 +133,19 @@ function exibirGraficoGeral() {
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function obterDadosGrafico() {
+function obterDadosGrafico(id_grafico) {
 
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
 
-    fetch(`/medidas/ultimas/geral`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/dash/ultimas/geral-${id_grafico}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 resposta.reverse();
 
-                plotarGrafico(resposta);
+                plotarGrafico(resposta, id_grafico);
 
             });
         } else {
@@ -136,7 +160,7 @@ function obterDadosGrafico() {
 // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
 // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-function plotarGrafico(resposta) {
+function plotarGrafico(resposta, id_grafico) {
 
     console.log('iniciando plotagem do gráfico...');
 
@@ -147,18 +171,22 @@ function plotarGrafico(resposta) {
     let dados = {
         labels: labels,
         datasets: [{
-            label: 'qtd_usuarios',
+            label: 'Usuários',
             data: [],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
+            backgroundColor: '#B11011',
+            borderColor: '#B11011',
+            borderWidth: 2,
+            minBarLength: 5,
+            borderRadius: 10
         },
         {
-            label: 'qtd_quiz',
+            label: 'Quiz',
             data: [],
-            fill: false,
-            borderColor: 'rgb(199, 52, 52)',
-            tension: 0.1
+            backgroundColor: '#fff',
+            borderColor: '#fff',
+            borderWidth: 2,
+            minBarLength: 5,
+            borderRadius: 10
         }]
     };
 
@@ -184,17 +212,40 @@ function plotarGrafico(resposta) {
 
     // Criando estrutura para plotar gráfico - config
     const config = {
-        type: 'line',
+        type: 'bar',
         data: dados,
+        options: {
+            scales: {
+                y: {
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
     };
 
     // Adicionando gráfico criado em div na tela
     let myChart = new Chart(
-        document.getElementById(`myChartCanvas`),
+        document.getElementById(`myChartCanvas-${id_grafico}`),
         config
     );
 
-    setTimeout(() => atualizarGrafico(dados, myChart), 10000);
+    setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
+
+    // kpis
+    let quantidade_usuario = 0;
+
+    for (let i = 0; i < resposta.length; i++) {
+        quantidade_usuario += resposta[i].qtd_usuarios;
+    }
+
+    let kpi_usuarios_semanal = document.getElementById('kpi-1');
+    kpi_usuarios_semanal.innerHTML =
+        `
+            <h1>${quantidade_usuario}</h1>
+            <span>Usuários cadastrados</span>
+        `;
 }
 
 
@@ -203,11 +254,9 @@ function plotarGrafico(resposta) {
 
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(dados, myChart) {
+function atualizarGrafico(dados, myChart, id_grafico) {
 
-
-
-    fetch(`/medidas/tempo-real/geral`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/dash/tempo-real/geral-${id_grafico}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (novoRegistro) {
 
@@ -217,7 +266,6 @@ function atualizarGrafico(dados, myChart) {
 
                 let avisoCaptura = document.getElementById(`avisoCaptura`)
                 avisoCaptura.innerHTML = ""
-
 
                 if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                     // console.log("---------------------------------------------------------------")
@@ -234,21 +282,21 @@ function atualizarGrafico(dados, myChart) {
                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].qtd_usuarios); // incluir uma nova medida de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].qtd_usuarios); // incluir uma nova 
 
                     dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[1].data.push(novoRegistro[0].qtd_quiz); // incluir uma nova medida de temperatura
+                    dados.datasets[1].data.push(novoRegistro[0].qtd_quiz); // incluir uma nova 
 
                     myChart.update();
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
         }
     })
         .catch(function (error) {
