@@ -1289,6 +1289,8 @@ body {
     background-repeat: no-repeat;
 
     border-bottom: 8px solid var(--asta-color4);
+
+        transform: translateY(-0.2%);
 }
 
 .container-asta-title{

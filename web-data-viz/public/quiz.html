@@ -1,13 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Asta - Quiz</title>
+
+    <link rel="stylesheet" href="./css/quiz.css">
+    <link rel="icon" href="./assets/icones/logo.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    
+
+<body onload="onloadEsconder()">
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <h1>
+                    Black
+                </h1>
+                <img src="./assets/icones/logo.png" alt="logo_nav">
+                <h1>Cover</h1>
+            </div>
+            <div class="nav-links">
+                <ul id="nav-links-ul">
+                    <li>
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="selected" href="./historia.html">História</a>
+                    </li>
+                    <li>
+                        <a class="nav-disabled">Quiz</a>
+                    </li>
+                    <li>
+                        <a class="nav-disabled">Placar</a>
+                    </li>
+                    <li>
+                        <a class="nav-disabled">Seu Status</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-buttons" id="nav-buttons">
+                <button class="btn-login" onclick="redirecionamento_login()">
+                    Logar
+                </button>
+                <button class="btn-cadastrar" onclick="redirecionamento_cadastro()">
+                    Cadastrar-se
+                </button>
+            </div>
+            <div class="container-perfil" id="perfil-user">
+
+            </div>
+        </div>
+    </header>
+
+    <!--divisao nav-->
+
+    <div class="divisao-nav" style="height: 10vh; width: 100%;">
+
+    </div>
+
+    <main>
+        <div class="container-quiz">
+            <div class="container-quiz-title">
+                <h1>
+                    ESCOLHA SEU <span>QUIZ</span>
+                </h1>
+            </div>
+            <div class="content-quiz">
+                <div class="quiz-box" id="quiz-1">
+                    <div class="overlay-quiz-box">
+
+                    </div>
+                    <div class="box-quiz-title">
+                        <h1>
+                            <i class="fa-solid fa-clipboard-list" style="color: rgb(255, 255, 255);"></i>
+                            QUIZ <span>GERAL</span>
+                        </h1>
+                    </div>
+                    <div class="box-quiz-desc">
+                        <p>
+                            TESTE SEUS <br>
+                            <span>CONHECIMENTOS</span> <br>
+                            SOBRE BLACK CLOVER
+                        </p>
+                    </div>
+                    <div class="box-quiz-button">
+                        <button>
+                            INCIAR QUIZ <i class="fa-solid fa-arrow-right" style="color: rgb(255, 255, 255);"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-box" id="quiz-2">
+                    <div class="overlay-quiz-box">
+
+                    </div>
+                    <div class="box-quiz-title">
+                        <h1>
+                            <i class="fa-brands fa-battle-net" style="color: rgb(255, 255, 255);"></i>
+                            QUIZ <span>PODERES</span>
+                        </h1>
+                    </div>
+                    <div class="box-quiz-desc">
+                        <p>
+                            VOCÊ CONHECE<br>
+                            <span> OS PODERES</span> <br>
+                            MAIS FORTES?
+                        </p>
+                    </div>
+                    <div class="box-quiz-button">
+                        <button>
+                            INCIAR QUIZ <i class="fa-solid fa-arrow-right" style="color: rgb(255, 255, 255);"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-box" id="quiz-3">
+                    <div class="overlay-quiz-box">
+
+                    </div>
+                    <div class="box-quiz-title">
+                        <h1>
+                            <i class="fa-solid fa-user-ninja" style="color: rrgb(255, 255, 255)"></i>
+                            QUIZ <span>PERSONAGENS</span>
+                        </h1>
+                    </div>
+                    <div class="box-quiz-desc">
+                        <p>
+                            VOCÊ REALMENTE<br>
+                            CONHECE OS<br>
+                            <span>PERSONAGENS</span>?
+                        </p>
+                    </div>
+                    <div class="box-quiz-button">
+                        <button>
+                            INCIAR QUIZ <i class="fa-solid fa-arrow-right" style="color: rgb(255, 255, 255);"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
+
+<!--
+<div id="pontuacaoEJogo">
+                <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+
+                <div id="pontuacao">
+                    <div id="pontuacaoDuranteJogo">
+                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo">
+                        <span id="pontuacaoFinal">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal">***</span>
+                    </div>
+                </div>
+
+                <div id="jogo">
+
+                    <div id="infoQuestao">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span
+                                id="qtdQuestoes"></span>
+                            questões.</span>
+                    </div>
+
+                    <div id="perguntaDaQuestaoAtual">
+                        <span id="spanQuestaoExibida"></span>
+                    </div>
+
+                    <div id="infoAlternativas">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
+
+                    <div id="opcoes">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD"/>
+                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+
+                    <div id="botoes">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
+
+                </div>
+            </div>
+-->
+
 </html>
 
 <script src="./js/sessao.js"></script>
