@@ -74,6 +74,7 @@ if (validar_sessao_historia == 'user') {
     window.location = "../index.html";
 }
 
+
 /*dash*/
 
 let proximaAtualizacao;
@@ -95,9 +96,9 @@ function exibirGraficoGeralSemanal() {
         </div>
     `
 
-            //     <div class="label-captura">
-            //     <p id="avisoCaptura" style="color: black"></p>
-            // </div>
+    //     <div class="label-captura">
+    //     <p id="avisoCaptura" style="color: black"></p>
+    // </div>
 
     obterDadosGrafico(id_grafico);
 }
@@ -116,9 +117,9 @@ function exibirGraficoGeralMensal() {
             </div>
         </div>
     `
-        // < div class="label-captura" >
-        //     <p id="avisoCaptura" style="color: white"></p>
-        //     </div >
+    // < div class="label-captura" >
+    //     <p id="avisoCaptura" style="color: white"></p>
+    //     </div >
 
     obterDadosGrafico(id_grafico);
 }
@@ -253,16 +254,32 @@ function plotarGrafico(resposta, id_grafico) {
     // chamar KPIs
     obterKPIs();
 
-    setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
+    proximaAtualizacao = setTimeout(() => {
+        atualizarGrafico(dados, myChart, id_grafico); obterKPIs();
+    }, 60000);
 }
 
 function obterKPIs() {
+
+    let data_att = new Date();
+    let ult_att = data_att.toLocaleTimeString();
+
+    // att gráfico
+    let att_graficos_valor = document.getElementById('valor_att');
+    att_graficos_valor.innerHTML = `${ult_att}`;
+
     fetch(`/dash/tempo-real/kpi`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (kpi) {
+
+                // kpis valores
                 let kpi_usuarios_semanal_usuarios = document.getElementById('kpi-1');
                 kpi_usuarios_semanal_usuarios.innerHTML =
                     `
+                        <div class="kpi-icon" id="kpi-icon-1">
+                                
+                        </div>
+
                         <h1>${kpi[0].qtd_usuario}</h1>
                         <span>Usuários cadastrados</span>
                     `;
@@ -270,8 +287,11 @@ function obterKPIs() {
                 let kpi_usuarios_semanal_quiz = document.getElementById('kpi-2');
                 kpi_usuarios_semanal_quiz.innerHTML =
                     `
-                        <h1>${kpi[0].qtd_quiz}</h1>
-                        <span>Quiz feitos</span>
+                    <div class="kpi-icon" id="kpi-icon-2">
+                                
+                    </div>
+                    <h1>${kpi[0].qtd_quiz}</h1>
+                    <span>Quiz feitos</span>
                     `;
             });
         } else {
@@ -298,9 +318,6 @@ function atualizarGrafico(dados, myChart, id_grafico) {
                 console.log(`Dados atuais do gráfico:`);
                 console.log(dados);
 
-                let avisoCaptura = document.getElementById(`avisoCaptura`)
-                avisoCaptura.innerHTML = ""
-
                 if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                     // console.log("---------------------------------------------------------------")
                     // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
@@ -312,7 +329,6 @@ function atualizarGrafico(dados, myChart, id_grafico) {
                     // console.log("---------------------------------------------------------------")
                 } else {
                     // tirando e colocando valores no gráfico
-
 
                     if (id_grafico == 'semanal') {
                         console.log("teste", novoRegistro[0].momento_grafico)
@@ -341,12 +357,16 @@ function atualizarGrafico(dados, myChart, id_grafico) {
                 }
 
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
+                proximaAtualizacao = setTimeout(() => {
+                    atualizarGrafico(dados, myChart, id_grafico); obterKPIs();
+                }, 60000);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart, id_grafico), 10000);
+            proximaAtualizacao = setTimeout(() => {
+                    atualizarGrafico(dados, myChart, id_grafico); obterKPIs();
+                }, 60000);
         }
     })
         .catch(function (error) {

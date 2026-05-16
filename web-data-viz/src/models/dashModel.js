@@ -81,7 +81,8 @@ function obterKPIs(){
     var instrucaoSql = `
         SELECT 
             COUNT(DISTINCT u.id_usuario) AS qtd_usuario,
-            COUNT(DISTINCT r.id_resultado) AS qtd_quiz
+            COUNT(DISTINCT r.id_resultado) AS qtd_quiz,
+            DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s') AS data_atualizacao
         FROM usuario u
             LEFT JOIN resultado r
                 ON u.id_usuario = r.fk_usuario;

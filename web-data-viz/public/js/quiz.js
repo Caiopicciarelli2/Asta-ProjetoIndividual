@@ -235,24 +235,190 @@ let erradas = 0
 let quantidadeDeQuestoes = listaDeQuestoes.length
 // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
-function onloadEsconder() {
-    document.getElementById('pontuacao').style.display = "none"
-    document.getElementById('jogo').style.display = "none"
-}
+function iniciarQuiz(quizTipo) {
+    if(quizTipo == 'geral'){
+        let container_quiz = document.getElementById('container-quiz');
+        container_quiz.style.alignItems = 'flex-start';
+        container_quiz.style.backgroundImage = "url('./assets/imagens/quiz_geral.png')";
 
-function iniciarQuiz() {
-    document.getElementById('pontuacao').style.display = "flex"
-    document.getElementById('jogo').style.display = "flex"
-    document.getElementById('btnIniciarQuiz').style.display = "none"
+        container_quiz.innerHTML = 
+        `
+             <div id="quiz-geral-res">
+                <div id="pontuacao">
+                    <div id="pontuacaoDuranteJogo">
+                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo">
+                        <span id="pontuacaoFinal">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal">***</span>
+                    </div>
+                </div>
+                <div id="quiz-geral-game">
+                    <div id="infoQuestao">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
+                            <span id="qtdQuestoes"></span>
+                            questões.
+                        </span>
+                    </div>
+                    <div id="perguntaDaQuestaoAtual">
+                        <span id="spanQuestaoExibida"></span>
+                    </div>
+                    <div id="infoAlternativas">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
+                    <div id="opcoes">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+                    <div id="botoes">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
 
-    document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+                </div>
+            </div>
+        `;
 
-    preencherHTMLcomQuestaoAtual(0)
+    }else if(quizTipo == 'poderes'){
+        let container_quiz = document.getElementById('container-quiz');
 
-    btnSubmeter.disabled = false
-    btnProx.disabled = true
-    // btnConcluir.disabled = true
-    btnTentarNovamente.disabled = true
+        container_quiz.innerHTML = 
+        `
+             <div id="quiz-poderes-res">
+                <div id="pontuacao">
+                    <div id="pontuacaoDuranteJogo">
+                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo">
+                        <span id="pontuacaoFinal">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal">***</span>
+                    </div>
+                </div>
+                <div id="quiz-poderes-game">
+                    <div id="infoQuestao">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
+                            <span id="qtdQuestoes"></span>
+                            questões.
+                        </span>
+                    </div>
+                    <div id="perguntaDaQuestaoAtual">
+                        <span id="spanQuestaoExibida"></span>
+                    </div>
+                    <div id="infoAlternativas">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
+                    <div id="opcoes">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+                    <div id="botoes">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
+
+                </div>
+            </div>
+        `;
+    }else if(quizTipo == 'personagens'){
+        let container_quiz = document.getElementById('container-quiz');
+
+        container_quiz.innerHTML = 
+        `
+            <div id="quiz-personagens-res">
+                <div id="pontuacao">
+                    <div id="pontuacaoDuranteJogo">
+                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
+                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+                    </div>
+                    <div id="pontuacaoFinalJogo">
+                        <span id="pontuacaoFinal">Pontuação Final:
+                            <span id="spanPontuacaoFinal">***</span>
+                        </span>
+                        <span id="msgFinal">***</span>
+                    </div>
+                </div>
+                <div id="quiz-personagens-game">
+                    <div id="infoQuestao">
+                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
+                            <span id="qtdQuestoes"></span>
+                            questões.
+                        </span>
+                    </div>
+                    <div id="perguntaDaQuestaoAtual">
+                        <span id="spanQuestaoExibida"></span>
+                    </div>
+                    <div id="infoAlternativas">
+                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                    </div>
+                    <div id="opcoes">
+                        <span>
+                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                        </span>
+                        <span>
+                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                        </span>
+                    </div>
+                    <div id="botoes">
+                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
+                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                    </div>
+
+                </div>
+            </div>
+        `;
+    }else{
+        alert(`Erro:`);
+    }
 }
 
 function preencherHTMLcomQuestaoAtual(index) {
