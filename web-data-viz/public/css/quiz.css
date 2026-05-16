@@ -557,10 +557,405 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    position: relative;
 
-    width: 50%;
+    width: 100%;
     height: 100%;
 
     background-color: #000000;
+    color: white;
+}
+
+.btn-fechar-quiz{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 7%;
+    width: 10%;
+
+    gap: 0.5vw;
+
+    background-color: var(--astaD-color1);
+    border: none;
+    border-radius: 5px;
+
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.5s ease;
+}
+
+.btn-fechar-quiz:hover{
+    background-color: white;
+    color: var(--astaD-color1);
+}
+
+.quiz-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+    width: 70%;
+}
+
+#quiz-geral-game,
+#quiz-poderes-game,
+#quiz-personagens-game{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 70%;
+    width: 80%;
+
+    border: 2px solid #47434383;
+    border-radius: 10px;
+}
+
+.quiz-info-questao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 5%;
+}
+
+.quiz-info-questao span{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.quiz-info-questao span span{
+    color: var(--astaD-color1);
+}
+
+.quiz-info-pergunta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 20%;
+}
+
+.quiz-info-pergunta span{
+    text-align: center;
+    overflow-wrap: break-word;
+    width: 70%;
+
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.quiz-info-alternativas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+    height: 5%;
+}
+
+.quiz-info-alternativas span{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.quiz-info-alternativas span span{
+    color: var(--astaD-color1);
+}
+
+.quiz-alternativas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 45%;
+    width: 90%;
+
+    gap: 1.2vh;
+}
+
+.alternativas-options{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: 17%;
+    width: 75%;
+
+    padding: 0 1rem;
+
+    background-color:  #2a2a2a;
+    border: 2px solid #ffffff00;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.alternativas-options:hover{
+    border: 2px solid #fff;
+}
+
+.alternativas-options:has(input:checked) {
+    background-color: var(--astaD-color1);
+
+    transform: scale(1.02);
+}
+
+.quiz-botoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 10%;
+    width: 82%;
+
+    gap: 1vw;
+}
+
+.quiz-botoes button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 60%;
+    width: 20%;
+
+    gap: 0.5vw;
+
+    background-color: var(--astaD-color1);
+    border: none;
+    border-radius: 5px;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.quiz-botoes button:hover{
+    transform: scale(0.98);
+}
+
+.quiz-botoes button:disabled{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.476);
+    border: 3px solid rgba(255, 255, 255, 0.476);
+
+    cursor: not-allowed;
+}
+
+.quiz-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    height: 80%;
+    width: 30%;
+}
+
+.box-pontuacao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 60%;
+    width: 70%;
+
+    border: 2px solid #47434383;
+    border-radius: 10px;
+}
+
+.pontuacao-title{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    height: 60%;
+    width: 90%;
+}
+
+.pontuacao-title h1{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.6rem;
+    color: rgb(0, 0, 0);
+}
+
+.quiz-pontuacao-ingame{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 20%;
+    width: 80%;
+}
+
+.quiz-pontuacao-ingame h4{
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+.quiz-resultado{
+    display: none;
+}
+
+.titulo-quiz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 10%;
+    width: 50%;
+}
+
+.titulo-quiz span{
+    color: var(--astaD-color1);
+}
+
+.overlay-content-aviso{
+    position: absolute;
+
+    display: none;
+    width: 100%;
+    height: 90vh;
+
+    background-color: rgba(0, 0, 0, 0.8);
+
+    z-index: 100000;
+}
+
+.content-aviso{
+    position: absolute;
+    top: 32%;
+    left: 33%;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 30%;
+    height: 30%;
+
+    background-color: white;
+    border: 3px solid var(--astaD-color1);
+    border-radius: 10px;
+    
+    z-index: 100001;
+}
+
+.content-aviso-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 70%;
+    width: 90%;
+
+    text-align: center;
+}
+
+.content-aviso-info p{
+    font-weight: 600;
+    color: black;
+}
+
+.content-aviso-info h1{
+    color: black;
+}
+
+.content-aviso-info h1 span{
+    color: var(--astaD-color1);
+}
+
+.content-aviso-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 20%;
+    width: 90%;
+
+    gap: 1vw;
+}
+
+#btn-confirm-desistir{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5vw;
+
+    height: 80%;
+    width: 40%;
+
+    background-color: var(--astaD-color1);
+    border: none;
+    border-radius: 5px;
+
+    font-weight: 500;
+    font-size: 1rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn-confirm-desistir:hover{
+    transform: scale(0.98);
+    font-size: 1rem;
+}
+
+#btn-continuar-quiz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5vw;
+
+    height: 80%;
+    width: 40%;
+
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn-continuar-quiz:hover{
+    background-color: black;
+    color: white;
+
+    transform: scale(0.98);
+    font-size: 1rem;
 }

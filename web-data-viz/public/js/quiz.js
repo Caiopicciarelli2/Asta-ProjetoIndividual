@@ -19,19 +19,19 @@ if (validar_sessao_quiz == 'user') {
     ul_navLinks.innerHTML =
         `
             <li>
-                <a href="./index.html">Home</a>
+                <a class="nav-redirect" href="./index.html">Home</a>
             </li>
             <li>
-                <a href="./historia.html">História</a>
+                <a class="nav-redirect" href="./historia.html">História</a>
             </li>
             <li>
-                <a class="selected" href="./quiz.html">Quiz</a>
+                <a class="nav-redirect selected" href="./quiz.html">Quiz</a>
             </li>
             <li>
-                <a href="./placar.html">Placar</a>
+                <a class="nav-redirect" href="./placar.html">Placar</a>
             </li>
             <li>
-                <a href="./status.html">Seu Status</a>
+                <a class="nav-redirect" href="./status.html">Seu Status</a>
             </li>
         `;
 
@@ -112,19 +112,19 @@ if (validar_sessao_quiz == 'user') {
     ul_navLinks.innerHTML =
         `
             <li>
-                <a href="./index.html">Home</a>
+                <a class="nav-redirect" href="./index.html">Home</a>
             </li>
             <li>
-                <a href="./historia.html">História</a>
+                <a class="nav-redirect" href="./historia.html">História</a>
             </li>
             <li>
-                <a class="selected" href="./quiz.html">Quiz</a>
+                <a class="nav-redirect selected" href="./quiz.html">Quiz</a>
             </li>
             <li>
-                <a href="./placar.html">Placar</a>
+                <a class="nav-redirect" href="./placar.html">Placar</a>
             </li>
             <li>
-                <a href="./status.html">Seu Status</a>
+                <a class="nav-redirect" href="./status.html">Seu Status</a>
             </li>
         `;
 
@@ -195,382 +195,474 @@ if (validar_sessao_quiz == 'user') {
 
 // quiz
 
-const listaDeQuestoes = [
-
-    {
-        pergunta: "Qual mês tem 30 dias?",
-        alternativaA: "Janeiro",
-        alternativaB: "Dezembro",
-        alternativaC: "Junho",
-        alternativaD: "Agosto",
-        alternativaCorreta: "alternativaC"
-    },
-
-    {
-        pergunta: "Quantas horas tem em um dia?",
-        alternativaA: "30 horas",
-        alternativaB: "38 horas",
-        alternativaC: "48 horas",
-        alternativaD: "24 horas",
-        alternativaCorreta: "alternativaD"
-    },
-
-    {
-        pergunta: "Qual destes números é ímpar?",
-        alternativaA: "Dez",
-        alternativaB: "Doze",
-        alternativaC: "Oito",
-        alternativaD: "Onze",
-        alternativaCorreta: "alternativaD"
-    }
-
-]
-
-// variáveis globais    
-let numeroDaQuestaoAtual = 0
-let pontuacaoFinal = 0
-let tentativaIncorreta = 0
-let certas = 0
-let erradas = 0
-let quantidadeDeQuestoes = listaDeQuestoes.length
-// let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+let num_questao = 0;
+let num_acertos = 0;
+let num_erros = 0;
+let questoes_totais = 5;
 
 function iniciarQuiz(quizTipo) {
-    if(quizTipo == 'geral'){
-        let container_quiz = document.getElementById('container-quiz');
-        container_quiz.style.alignItems = 'flex-start';
-        container_quiz.style.backgroundImage = "url('./assets/imagens/quiz_geral.png')";
-
-        container_quiz.innerHTML = 
+    let ul_navLinks = document.getElementById('nav-links-ul');
+    ul_navLinks.innerHTML =
         `
+            <li>
+                <a class="nav-redirect" onclick="redirect_quiz('home')">Home</a>
+            </li>
+            <li>
+                <a class="nav-redirect" onclick="redirect_quiz('historia')">História</a>
+            </li>
+            <li>
+                <a class="nav-redirect selected" onclick="redirect_quiz('quiz')">Quiz</a>
+            </li>
+            <li>
+                <a class="nav-redirect" onclick="redirect_quiz('placar')">Placar</a>
+            </li>
+            <li>
+                <a class="nav-redirect" onclick="redirect_quiz('status')">Seu Status</a>
+            </li>
+        `;
+
+    if (quizTipo == 'geral') {
+        let container_quiz = document.getElementById('container-quiz');
+        container_quiz.innerHTML =
+            `
+
              <div id="quiz-geral-res">
-                <div id="pontuacao">
-                    <div id="pontuacaoDuranteJogo">
-                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
-                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+                <div class="quiz-left">
+                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                        Desistir do Quiz
+                    </button>
+                    <div class="titulo-quiz">
+                        <h1>
+                            QUIZ 
+                            <span>GERAL</span>
+                        </h1>
                     </div>
-                    <div id="pontuacaoFinalJogo">
-                        <span id="pontuacaoFinal">Pontuação Final:
-                            <span id="spanPontuacaoFinal">***</span>
-                        </span>
-                        <span id="msgFinal">***</span>
+                    <div id="quiz-geral-game">
+                        <div class="quiz-info-questao">
+                            <span>
+                                Questão atual: 
+                                <span class="quiz-numero-questao"></span> 
+                                de
+                                <span class="quiz-total-questoes">${questoes_totais}</span>
+                                questões.
+                            </span>
+                        </div>
+                        <div class="quiz-info-pergunta">
+                            <span class="quiz-pergunta"></span>
+                        </div>
+                        <div class="quiz-info-alternativas">
+                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                        </div>
+                        <div class="quiz-alternativas">
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
+                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
+                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
+                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
+                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                            </span>
+                        </div>
+                        <div class="quiz-botoes">
+                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                        </div>
                     </div>
                 </div>
-                <div id="quiz-geral-game">
-                    <div id="infoQuestao">
-                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
-                            <span id="qtdQuestoes"></span>
-                            questões.
-                        </span>
-                    </div>
-                    <div id="perguntaDaQuestaoAtual">
-                        <span id="spanQuestaoExibida"></span>
-                    </div>
-                    <div id="infoAlternativas">
-                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                    </div>
-                    <div id="opcoes">
-                        <span>
-                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                        </span>
-                    </div>
-                    <div id="botoes">
-                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
-                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                    </div>
+                <div class="quiz-right">
+                    <div class="box-pontuacao">
+                        <div class="pontuacao-title">
+                        <h1>
+                            Progresso Quiz
+                        </h1>
+                        </div>
+                        <div class="quiz-pontuacao-ingame">
+                            <h4>
+                                Quantidade de acertos: 
+                                <span class="quiz-qtd-certas">
 
+                                </span>
+                            </h4>
+                            <h4>
+                                Quantidade de erros: 
+                                <span class="quiz-qtd-erradas">
+
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="quiz-resultado">
+                            <span class="quiz-info-pontuacao-final">Pontuação Final:
+                                <span class="quiz-pontuacao-final">***</span>
+                            </span>
+                            <span class="quiz-mensagem-final">***</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay-content-aviso"></div>
+            <div class="content-aviso">
+                <div class="content-aviso-info">
+                    <p>Você tem certeza que quer desistir do quiz?</p>
+                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                </div>
+                <div class="content-aviso-buttons">
+                    <button id="btn-confirm-desistir">
+                        Sim, vou desistir.
+                    </button>
+                    <button id="btn-continuar-quiz">
+                        Nunca, Continuarei.
+                    </button>
                 </div>
             </div>
         `;
 
-    }else if(quizTipo == 'poderes'){
+    } else if (quizTipo == 'poderes') {
         let container_quiz = document.getElementById('container-quiz');
 
-        container_quiz.innerHTML = 
-        `
-             <div id="quiz-poderes-res">
-                <div id="pontuacao">
-                    <div id="pontuacaoDuranteJogo">
-                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
-                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+        container_quiz.innerHTML =
+            `
+           <div id="quiz-poderes-res">
+                <div class="quiz-left">
+                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                        Desistir do Quiz
+                    </button>
+                    <div class="titulo-quiz">
+                        <h1>
+                            QUIZ 
+                            <span>PODERES</span>
+                        </h1>
                     </div>
-                    <div id="pontuacaoFinalJogo">
-                        <span id="pontuacaoFinal">Pontuação Final:
-                            <span id="spanPontuacaoFinal">***</span>
-                        </span>
-                        <span id="msgFinal">***</span>
+                    <div id="quiz-poderes-game">
+                        <div class="quiz-info-questao">
+                            <span>
+                                Questão atual: 
+                                <span class="quiz-numero-questao"></span> 
+                                de
+                                <span class="quiz-total-questoes">${questoes_totais}</span>
+                                questões.
+                            </span>
+                        </div>
+                        <div class="quiz-info-pergunta">
+                            <span class="quiz-pergunta"></span>
+                        </div>
+                        <div class="quiz-info-alternativas">
+                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                        </div>
+                        <div class="quiz-alternativas">
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
+                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
+                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
+                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
+                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                            </span>
+                        </div>
+                        <div class="quiz-botoes">
+                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                        </div>
                     </div>
                 </div>
-                <div id="quiz-poderes-game">
-                    <div id="infoQuestao">
-                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
-                            <span id="qtdQuestoes"></span>
-                            questões.
-                        </span>
-                    </div>
-                    <div id="perguntaDaQuestaoAtual">
-                        <span id="spanQuestaoExibida"></span>
-                    </div>
-                    <div id="infoAlternativas">
-                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                    </div>
-                    <div id="opcoes">
-                        <span>
-                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                        </span>
-                    </div>
-                    <div id="botoes">
-                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
-                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                    </div>
+                <div class="quiz-right">
+                    <div class="box-pontuacao">
+                        <div class="pontuacao-title">
+                        <h1>
+                            Progresso Quiz
+                        </h1>
+                        </div>
+                        <div class="quiz-pontuacao-ingame">
+                            <h4>
+                                Quantidade de acertos: 
+                                <span class="quiz-qtd-certas">
 
+                                </span>
+                            </h4>
+                            <h4>
+                                Quantidade de erros: 
+                                <span class="quiz-qtd-erradas">
+
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="quiz-resultado">
+                            <span class="quiz-info-pontuacao-final">Pontuação Final:
+                                <span class="quiz-pontuacao-final">***</span>
+                            </span>
+                            <span class="quiz-mensagem-final">***</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay-content-aviso"></div>
+            <div class="content-aviso">
+                <div class="content-aviso-info">
+                    <p>Você tem certeza que quer desistir do quiz?</p>
+                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                </div>
+                <div class="content-aviso-buttons">
+                    <button id="btn-confirm-desistir">
+                        Sim, vou desistir.
+                    </button>
+                    <button id="btn-continuar-quiz">
+                        Nunca, Continuarei.
+                    </button>
                 </div>
             </div>
         `;
-    }else if(quizTipo == 'personagens'){
+    } else if (quizTipo == 'personagens') {
         let container_quiz = document.getElementById('container-quiz');
 
-        container_quiz.innerHTML = 
-        `
-            <div id="quiz-personagens-res">
-                <div id="pontuacao">
-                    <div id="pontuacaoDuranteJogo">
-                        <span>Quantidade de acertos: <span id="spanCertas"></span></span>
-                        <span>Quantidade de erros: <span id="spanErradas"></span></span>
+        container_quiz.innerHTML =
+            `
+             <div id="quiz-personagens-res">
+                <div class="quiz-left">
+                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                        Desistir do Quiz
+                    </button>
+                    <div class="titulo-quiz">
+                        <h1>
+                            QUIZ 
+                            <span>PERSONAGENS</span>
+                        </h1>
                     </div>
-                    <div id="pontuacaoFinalJogo">
-                        <span id="pontuacaoFinal">Pontuação Final:
-                            <span id="spanPontuacaoFinal">***</span>
-                        </span>
-                        <span id="msgFinal">***</span>
+                    <div id="quiz-personagens-game">
+                        <div class="quiz-info-questao">
+                            <span>
+                                Questão atual: 
+                                <span class="quiz-numero-questao"></span> 
+                                de
+                                <span class="quiz-total-questoes">${questoes_totais}</span>
+                                questões.
+                            </span>
+                        </div>
+                        <div class="quiz-info-pergunta">
+                            <span class="quiz-pergunta"></span>
+                        </div>
+                        <div class="quiz-info-alternativas">
+                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                        </div>
+                        <div class="quiz-alternativas">
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
+                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
+                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
+                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
+                            </span>
+                            <span class="alternativas-options">
+                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
+                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
+                            </span>
+                        </div>
+                        <div class="quiz-botoes">
+                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                        </div>
                     </div>
                 </div>
-                <div id="quiz-personagens-game">
-                    <div id="infoQuestao">
-                        <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
-                            <span id="qtdQuestoes"></span>
-                            questões.
-                        </span>
-                    </div>
-                    <div id="perguntaDaQuestaoAtual">
-                        <span id="spanQuestaoExibida"></span>
-                    </div>
-                    <div id="infoAlternativas">
-                        <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                    </div>
-                    <div id="opcoes">
-                        <span>
-                            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                            <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                        </span>
-                        <span>
-                            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                        </span>
-                    </div>
-                    <div id="botoes">
-                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                        <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
-                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                    </div>
+                <div class="quiz-right">
+                    <div class="box-pontuacao">
+                        <div class="pontuacao-title">
+                        <h1>
+                            Progresso Quiz
+                        </h1>
+                        </div>
+                        <div class="quiz-pontuacao-ingame">
+                            <h4>
+                                Quantidade de acertos: 
+                                <span class="quiz-qtd-certas">
 
+                                </span>
+                            </h4>
+                            <h4>
+                                Quantidade de erros: 
+                                <span class="quiz-qtd-erradas">
+
+                                </span>
+                            </h4>
+                        </div>
+                        <div class="quiz-resultado">
+                            <span class="quiz-info-pontuacao-final">Pontuação Final:
+                                <span class="quiz-pontuacao-final">***</span>
+                            </span>
+                            <span class="quiz-mensagem-final">***</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay-content-aviso"></div>
+            <div class="content-aviso">
+                <div class="content-aviso-info">
+                    <p>Você tem certeza que quer desistir do quiz?</p>
+                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                </div>
+                <div class="content-aviso-buttons">
+                    <button id="btn-confirm-desistir">
+                        Sim, vou desistir.
+                    </button>
+                    <button id="btn-continuar-quiz">
+                        Nunca, Continuarei.
+                    </button>
                 </div>
             </div>
         `;
-    }else{
-        alert(`Erro:`);
     }
+
+    // lógica do web-data-viz, faz o radio ativar quando clica no span
+    let options = document.querySelectorAll('.alternativas-options');
+    options.forEach(option => {
+
+        option.addEventListener('click', () => {
+            let radio = option.querySelector('input');
+            radio.checked = true;
+
+            btns_status();
+        });
+
+    });
 }
 
-function preencherHTMLcomQuestaoAtual(index) {
-    habilitarAlternativas(true)
-    const questaoAtual = listaDeQuestoes[index]
-    numeroDaQuestaoAtual = index
-    console.log("questaoAtual")
-    console.log(questaoAtual)
-    document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
-    document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
-    document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
-    document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
-    document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
-    document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+function fechar_quiz() {
+    let content_aviso = document.querySelector('.content-aviso');
+    let overlay_content_aviso = document.querySelector('.overlay-content-aviso');
+
+    overlay_content_aviso.style.display = 'flex';
+    content_aviso.style.display = 'flex';
+
+    let btn_confirmar = document.querySelector('#btn-confirm-desistir');
+    let btn_continuar_quiz = document.querySelector('#btn-continuar-quiz');
+
+    btn_confirmar.addEventListener('click', () => {
+        window.location.reload();
+    });
+
+    btn_continuar_quiz.addEventListener('click', () => {
+        overlay_content_aviso.style.display = 'none';
+        content_aviso.style.display = 'none';
+    });
 }
 
-function submeter() {
-    const options = document.getElementsByName("option"); // recupera alternativas no html
+function redirect_quiz(tipoRedirect) {
+    fechar_quiz();
 
-    let hasChecked = false
-    for (let i = 0; i < options.length; i++) {
-        if (options[i].checked) {
-            hasChecked = true
-            break
+    let btn_confirmar = document.querySelector('#btn-confirm-desistir');
+
+    btn_confirmar.onclick = () => {
+
+        if (tipoRedirect == 'home') {
+            window.location.href = './index.html';
+
+        } else if (tipoRedirect == 'historia') {
+            window.location.href = './historia.html';
+
+        } else if (tipoRedirect == 'quiz') {
+            window.location.href = './quiz.html'
+
+        } else if (tipoRedirect == 'placar') {
+            window.location.href = './placar.html';
+
+        } else if (tipoRedirect == 'status') {
+            window.location.href = './status.html';
         }
-    }
-
-    if (!hasChecked) {
-        alert("Não há alternativas escolhidas. Escolha uma opção.")
-    } else {
-        btnSubmeter.disabled = true
-        btnProx.disabled = false
-
-        habilitarAlternativas(false)
-
-        checarResposta()
-    }
+    };
 }
 
-function habilitarAlternativas(trueOrFalse) {
-    let opcaoEscolhida = trueOrFalse ? false : true
+let resposta_submetida = false;
 
-    primeiraOpcao.disabled = opcaoEscolhida
-    segundaOpcao.disabled = opcaoEscolhida
-    terceiraOpcao.disabled = opcaoEscolhida
-    quartaOpcao.disabled = opcaoEscolhida
+function btns_status() {
 
-}
+    let radios = document.querySelectorAll('input[name="option"]');
 
-function avancar() {
-    btnProx.disabled = true
-    btnSubmeter.disabled = false
+    let btn_limpar = document.querySelector('.quiz-limpar');
+    let btn_avancar = document.querySelector('.quiz-avancar-resposta');
 
-    desmarcarRadioButtons()
+    let tem_checked = false;
 
-    if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
-        preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-    } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-        alert("Atenção... a próxima é a ultima questão!")
-        preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-    } else {
-        finalizarJogo()
-    }
-    limparCoresBackgroundOpcoes()
-}
-
-function tentarNovamente() {
-    // atualiza a página
-    window.location.reload()
-}
-
-function checarResposta() {
-    const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-    const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
-
-    const options = document.getElementsByName("option"); // recupera alternativas no html
-
-    let alternativaCorreta = null // variável para armazenar a alternativa correta
-
-    options.forEach((option) => {
-        if (option.value === respostaQuestaoAtual) {
-            console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-            alternativaCorreta = option.labels[0].id
+    radios.forEach(radio => {
+        if (radio.checked) {
+            tem_checked = true;
         }
-    })
+    });
 
-    // verifica se resposta assinalada é correta
-    options.forEach((option) => {
-        if (option.checked === true && option.value === respostaQuestaoAtual) {
-            document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-            pontuacaoFinal++
-            certas++
-            document.getElementById("spanCertas").innerHTML = certas
-            numeroDaQuestaoAtual++
-        } else if (option.checked && option.value !== respostaQuestaoAtual) {
-            const wrongLabelId = option.labels[0].id
+    // botão limpar
+    btn_limpar.disabled = !tem_checked;
 
-            document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-            document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-            tentativaIncorreta++
-            erradas++
-            document.getElementById("spanErradas").innerHTML = erradas
-            numeroDaQuestaoAtual++
+    // botão avançar
+    btn_avancar.disabled = !resposta_submetida;
+}
+
+function limpar_resposta() {
+    let radios = document.querySelectorAll('input[name="option"]');
+
+    radios.forEach(radio => {
+        radio.checked = false;
+    });
+
+    resposta_submetida = false;
+
+    btns_status();
+}
+
+function confirmar_resposta(quizTipo) {
+    let radios = document.querySelectorAll('input[name="option"]');
+    let tem_checked = false;
+
+    radios.forEach(radio => {
+        if (radio.checked) {
+            tem_checked = true;
         }
-    })
-}
+    });
 
-function limparCoresBackgroundOpcoes() {
-    const options = document.getElementsByName("option");
-    options.forEach((option) => {
-        document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
-        document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
-    })
-}
-
-function desmarcarRadioButtons() {
-    const options = document.getElementsByName("option");
-    for (let i = 0; i < options.length; i++) {
-        options[i].checked = false;
-    }
-}
-
-function finalizarJogo() {
-    let textoParaMensagemFinal = null
-    let classComCoresParaMensagemFinal = null
-    const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-    if (porcentagemFinalDeAcertos <= 0.3) {
-        textoParaMensagemFinal = "Parece que você não estudou..."
-        classComCoresParaMensagemFinal = "text-danger-with-bg"
-    }
-    else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-        textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-        classComCoresParaMensagemFinal = "text-warning-with-bg"
-    }
-    else if (porcentagemFinalDeAcertos >= 0.9) {
-        textoParaMensagemFinal = "Uau, parabéns!"
-        classComCoresParaMensagemFinal = "text-success-with-bg"
+    if (!tem_checked) {
+        alert('Selecione uma alternativa!')
+        return;
     }
 
-    textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+    resposta_submetida = true;
+
+    btns_status();
+}
 
 
-    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-    document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
-    document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+function avancar_questao(quizTipo) {
+    
+}
 
-    document.getElementById('jogo').classList.add("text-new-gray")
-
-    btnProx.disabled = true
-    btnSubmeter.disabled = true
-    // btnConcluir.disabled = true
-    btnTentarNovamente.disabled = false
+function finalizar_quiz(quizTipo) {
 
 }
+
