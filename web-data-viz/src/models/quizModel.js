@@ -1,23 +1,22 @@
 var database = require("../database/config");
 
-function pegarDados() {
+function obterDadosQuiz() {
     
-    var instrucaoSql = ``;
+    var instrucaoSql = `SELECT`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function cadastrarDados() {
+function resultadoQuiz() {
     
-    var instrucaoSql = ``;
+    var instrucaoSql = `INSERT`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
 
 module.exports = {
-    pegarDados,
-    cadastrarDados
+    obterDadosQuiz,
+    resultadoQuiz
 };

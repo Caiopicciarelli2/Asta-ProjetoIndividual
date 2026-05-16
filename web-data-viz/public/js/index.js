@@ -257,7 +257,7 @@ let cards_personagens_home = document.querySelectorAll('.card-personagens');
 
 cards_personagens_home.forEach(cards => {
     cards.addEventListener('click', () => {
-        window.location = "../historia.html";
+        window.location = "../historia.html#personagens";
     });
 });
 

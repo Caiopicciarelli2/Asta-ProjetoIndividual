@@ -1,7 +1,7 @@
 var quizModel = require("../models/quizModel");
 
-function pegarDados(){
-    quizModel.pegarDados()
+function obterDadosQuiz(){
+    quizModel.obterDadosQuiz()
     .then(function (resultado) {
 
         if (resultado.length > 0) {
@@ -17,8 +17,8 @@ function pegarDados(){
     });
 }
 
-function cadastrarDados(){
-    quizModel.cadastrarDados()
+function resultadoQuiz(){
+    quizModel.resultadoQuiz()
     .then(function (resultado) {
 
         if (resultado.length > 0) {
@@ -36,6 +36,6 @@ function cadastrarDados(){
 
 
 module.exports = {
-    pegarDados,
-    cadastrarDados
+    obterDadosQuiz,
+    resultadoQuiz
 }
