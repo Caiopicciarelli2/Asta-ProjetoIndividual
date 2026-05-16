@@ -91,7 +91,7 @@ INSERT INTO quiz(nome, descricao, qtd_questoes, dt_atualizacao) VALUES
     ('PODERES', 'Quiz que foca nos poderes apresentados no anime, suas caracteristicas e em quais batalhas foram usados.', 5, NOW()),
     ('PERSONAGENS', 'Quiz que foca nos personagens e suas interações no desenvolvimento da história.', 5, NOW());
 
-INSERT INTO questão (questao, nivel_questao, fk_quiz) VALUES
+INSERT INTO questao (questao, nivel_questao, fk_quiz) VALUES
     ('Quem é o protagonista que nasceu sem magia no reino de Clover, mas sonha em se tornar o Rei Mago?', 'Fácil', 1),
     ('Qual é o grande objetivo compartilhado por Asta e Yuno desde a infância, motivando a rivalidade entre os dois?', 'Fácil', 1),
     ('Qual é o nome do esquadrão dos Cavaleiros Mágicos ao qual Asta se junta?', 'Médio', 1),
