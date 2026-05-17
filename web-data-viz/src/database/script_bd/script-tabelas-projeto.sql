@@ -168,7 +168,7 @@ INSERT INTO alternativa (texto_alternativa, tipo, fk_questao) VALUES
     ('Licht', 1, 15),
     ('Rhya', 0, 15),
     ('Vetto', 0, 15),
-    ('Fana', 0, 15),
+    ('Fana', 0, 15);
 /*
 Web-dat-vis Schema
 */

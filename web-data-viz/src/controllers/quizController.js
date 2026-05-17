@@ -1,14 +1,17 @@
 var quizModel = require("../models/quizModel");
 
-function obterDadosQuiz(){
-    quizModel.obterDadosQuiz()
+function obterDadosQuiz(req, res){
+    let id_quiz = req.params.id_quiz;
+
+    quizModel.obterDadosQuiz(id_quiz)
     .then(function (resultado) {
 
         if (resultado.length > 0) {
-            res.status(403).send("");
+            console.log(resultado);
+            res.status(200).json(resultado);
         }
         else {
-            
+            res.status(204).send("Nenhum resultado encontrado!");
         }
     })
     .catch(function (erro) {

@@ -193,12 +193,25 @@ if (validar_sessao_quiz == 'user') {
     })
 }
 
+
+
 // quiz
 
-let num_questao = 0;
+// guarda valores que vem do model
+let QUIZ_NOME = "";
+let QUIZ_QTD_QUESTOES = 0;
+let questoes = [];
+let ALTERNATIVA_CORRETA = "";
+
+// variaveis para o funcionamento do quiz
+let num_questao = 1;
 let num_acertos = 0;
 let num_erros = 0;
 let questoes_totais = 5;
+
+// resultado
+
+let repostas_usuario = [];
 
 function iniciarQuiz(quizTipo) {
     let ul_navLinks = document.getElementById('nav-links-ul');
@@ -222,338 +235,487 @@ function iniciarQuiz(quizTipo) {
         `;
 
     if (quizTipo == 'geral') {
-        let container_quiz = document.getElementById('container-quiz');
-        container_quiz.innerHTML =
-            `
+        let id_quiz = 1;
 
-             <div id="quiz-geral-res">
-                <div class="quiz-left">
-                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
-                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
-                        Desistir do Quiz
-                    </button>
-                    <div class="titulo-quiz">
-                        <h1>
-                            QUIZ 
-                            <span>GERAL</span>
-                        </h1>
-                    </div>
-                    <div id="quiz-geral-game">
-                        <div class="quiz-info-questao">
-                            <span>
-                                Questão atual: 
-                                <span class="quiz-numero-questao"></span> 
-                                de
-                                <span class="quiz-total-questoes">${questoes_totais}</span>
-                                questões.
-                            </span>
-                        </div>
-                        <div class="quiz-info-pergunta">
-                            <span class="quiz-pergunta"></span>
-                        </div>
-                        <div class="quiz-info-alternativas">
-                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
-                        </div>
-                        <div class="quiz-alternativas">
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
-                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
-                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
-                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
-                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                            </span>
-                        </div>
-                        <div class="quiz-botoes">
-                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
-                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
-                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
-                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="quiz-right">
-                    <div class="box-pontuacao">
-                        <div class="pontuacao-title">
-                        <h1>
-                            Progresso Quiz
-                        </h1>
-                        </div>
-                        <div class="quiz-pontuacao-ingame">
-                            <h4>
-                                Quantidade de acertos: 
-                                <span class="quiz-qtd-certas">
+        fetch(`/quiz/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (quiz) {
+                    QUIZ_NOME = quiz[0].nome_quiz;
+                    QUIZ_QTD_QUESTOES = quiz[0].qtd_questoes
 
-                                </span>
-                            </h4>
-                            <h4>
-                                Quantidade de erros: 
-                                <span class="quiz-qtd-erradas">
 
-                                </span>
-                            </h4>
-                        </div>
-                        <div class="quiz-resultado">
-                            <span class="quiz-info-pontuacao-final">Pontuação Final:
-                                <span class="quiz-pontuacao-final">***</span>
-                            </span>
-                            <span class="quiz-mensagem-final">***</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // for para guardar as questoes e suas alternativas, transformando o quiz cru em um JSON
 
-            <div class="overlay-content-aviso"></div>
-            <div class="content-aviso">
-                <div class="content-aviso-info">
-                    <p>Você tem certeza que quer desistir do quiz?</p>
-                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
-                </div>
-                <div class="content-aviso-buttons">
-                    <button id="btn-confirm-desistir">
-                        Sim, vou desistir.
-                    </button>
-                    <button id="btn-continuar-quiz">
-                        Nunca, Continuarei.
-                    </button>
-                </div>
-            </div>
-        `;
+                    for (let i = 0; i < quiz.length; i++) {
+
+                        if (quiz[i].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i].alt_texto;
+                        } else if (quiz[i + 1].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 1].alt_texto;
+                        } else if (quiz[i + 2].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 2].alt_texto;
+                        } else if (quiz[i + 3].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 3].alt_texto;
+                        }
+
+                        let questao_objeto = {
+                            "questao": `${quiz[i].questao}`,
+                            "alternativas": {
+                                "alternativaA": `${quiz[i].alt_texto}`,
+                                "alternativaB": `${quiz[i + 1].alt_texto}`,
+                                "alternativaC": `${quiz[i + 2].alt_texto}`,
+                                "alternativaD": `${quiz[i + 3].alt_texto}`,
+                            },
+                            "alt_correta": `${ALTERNATIVA_CORRETA}`
+
+                        }
+                        i += 3; // ele pula o que ja foi inserido, e continua na forma certa
+                        questoes.push(questao_objeto);
+                    }
+
+                    // console.log(questoes, `OPA`);
+
+                    // tela quiz geral
+                    let container_quiz = document.getElementById('container-quiz');
+                    container_quiz.innerHTML =
+                        `
+                        <div id="quiz-geral-res">
+                            <div class="quiz-left">
+                                <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                                    <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                                    Desistir do Quiz
+                                </button>
+                                <div class="titulo-quiz">
+                                    <h1>
+                                        QUIZ 
+                                        <span>${QUIZ_NOME}</span>
+                                    </h1>
+                                </div>
+                                <div id="quiz-geral-game">
+                                    <div class="quiz-info-questao">
+                                        <span>
+                                            Questão atual: 
+                                            <span class="quiz-numero-questao">${num_questao}</span> 
+                                            de
+                                            <span class="quiz-total-questoes">${QUIZ_QTD_QUESTOES}</span>
+                                            questões.
+                                        </span>
+                                    </div>
+                                    <div class="quiz-info-pergunta">
+                                        <span class="quiz-pergunta">${questoes[num_questao - 1].questao}</span>
+                                    </div>
+                                    <div class="quiz-info-alternativas">
+                                        <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                                    </div>
+                                    <div class="quiz-alternativas">
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaA" />
+                                            <label id="labelOpcaoUm">${questoes[num_questao - 1].alternativas.alternativaA}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaB" />
+                                            <label id="labelOpcaoDois">${questoes[num_questao - 1].alternativas.alternativaB}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaC" />
+                                            <label id="labelOpcaoTres">${questoes[num_questao - 1].alternativas.alternativaC}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaD" />
+                                            <label id="labelOpcaoQuatro">${questoes[num_questao - 1].alternativas.alternativaD}</label>
+                                        </span>
+                                    </div>
+                                    <div class="quiz-botoes">
+                                        <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                                        <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                                        <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                                        <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quiz-right">
+                                <div class="box-pontuacao">
+                                    <div class="timer-pontuacao">
+                                        <h2>6m:23s</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overlay-content-aviso"></div>
+                        <div class="content-aviso">
+                            <div class="content-aviso-info">
+                                <p>Você tem certeza que quer desistir do quiz?</p>
+                                <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                            </div>
+                            <div class="content-aviso-buttons">
+                                <button id="btn-confirm-desistir">
+                                    Sim, vou desistir.
+                                </button>
+                                <button id="btn-continuar-quiz">
+                                    Nunca, Continuarei.
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    // lógica do web-data-viz, faz o radio ativar quando clica no span
+                    let options = document.querySelectorAll('.alternativas-options');
+                    options.forEach(option => {
+
+                        option.addEventListener('click', () => {
+                            let radio = option.querySelector('input');
+                            radio.checked = true;
+
+                            btns_status();
+                        });
+
+                    });
+                });
+            } else {
+                console.error('Nenhum quiz econtrado!');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do Quiz ${error.message}`);
+            });
 
     } else if (quizTipo == 'poderes') {
-        let container_quiz = document.getElementById('container-quiz');
 
-        container_quiz.innerHTML =
-            `
-           <div id="quiz-poderes-res">
-                <div class="quiz-left">
-                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
-                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
-                        Desistir do Quiz
-                    </button>
-                    <div class="titulo-quiz">
-                        <h1>
-                            QUIZ 
-                            <span>PODERES</span>
-                        </h1>
-                    </div>
-                    <div id="quiz-poderes-game">
-                        <div class="quiz-info-questao">
-                            <span>
-                                Questão atual: 
-                                <span class="quiz-numero-questao"></span> 
-                                de
-                                <span class="quiz-total-questoes">${questoes_totais}</span>
-                                questões.
-                            </span>
-                        </div>
-                        <div class="quiz-info-pergunta">
-                            <span class="quiz-pergunta"></span>
-                        </div>
-                        <div class="quiz-info-alternativas">
-                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
-                        </div>
-                        <div class="quiz-alternativas">
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
-                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
-                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
-                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
-                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                            </span>
-                        </div>
-                        <div class="quiz-botoes">
-                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
-                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
-                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
-                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="quiz-right">
-                    <div class="box-pontuacao">
-                        <div class="pontuacao-title">
-                        <h1>
-                            Progresso Quiz
-                        </h1>
-                        </div>
-                        <div class="quiz-pontuacao-ingame">
-                            <h4>
-                                Quantidade de acertos: 
-                                <span class="quiz-qtd-certas">
+        let id_quiz = 2;
 
-                                </span>
-                            </h4>
-                            <h4>
-                                Quantidade de erros: 
-                                <span class="quiz-qtd-erradas">
+        fetch(`/quiz/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (quiz) {
+                    QUIZ_NOME = quiz[0].nome_quiz;
+                    QUIZ_QTD_QUESTOES = quiz[0].qtd_questoes
 
-                                </span>
-                            </h4>
-                        </div>
-                        <div class="quiz-resultado">
-                            <span class="quiz-info-pontuacao-final">Pontuação Final:
-                                <span class="quiz-pontuacao-final">***</span>
-                            </span>
-                            <span class="quiz-mensagem-final">***</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // for para guardar as questoes e suas alternativas, transformando o quiz cru em um JSON
 
-            <div class="overlay-content-aviso"></div>
-            <div class="content-aviso">
-                <div class="content-aviso-info">
-                    <p>Você tem certeza que quer desistir do quiz?</p>
-                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
-                </div>
-                <div class="content-aviso-buttons">
-                    <button id="btn-confirm-desistir">
-                        Sim, vou desistir.
-                    </button>
-                    <button id="btn-continuar-quiz">
-                        Nunca, Continuarei.
-                    </button>
-                </div>
-            </div>
-        `;
+                    for (let i = 0; i < quiz.length; i++) {
+
+                        if (quiz[i].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i].alt_texto;
+                        } else if (quiz[i + 1].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 1].alt_texto;
+                        } else if (quiz[i + 2].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 2].alt_texto;
+                        } else if (quiz[i + 3].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 3].alt_texto;
+                        }
+
+                        let questao_objeto = {
+                            "questao": `${quiz[i].questao}`,
+                            "alternativas": {
+                                "alternativaA": `${quiz[i].alt_texto}`,
+                                "alternativaB": `${quiz[i + 1].alt_texto}`,
+                                "alternativaC": `${quiz[i + 2].alt_texto}`,
+                                "alternativaD": `${quiz[i + 3].alt_texto}`,
+                            },
+                            "alt_correta": `${ALTERNATIVA_CORRETA}`
+
+                        }
+                        i += 3; // ele pula o que ja foi inserido, e continua na forma certa
+                        questoes.push(questao_objeto);
+                    }
+
+                    // console.log(questoes, `OPA`);
+
+                    // tela quiz geral
+                    let container_quiz = document.getElementById('container-quiz');
+                    container_quiz.innerHTML =
+                        `
+                        <div id="quiz-poderes-res">
+                            <div class="quiz-left">
+                                <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                                    <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                                    Desistir do Quiz
+                                </button>
+                                <div class="titulo-quiz">
+                                    <h1>
+                                        QUIZ 
+                                        <span>${QUIZ_NOME}</span>
+                                    </h1>
+                                </div>
+                                <div id="quiz-poderes-game">
+                                    <div class="quiz-info-questao">
+                                        <span>
+                                            Questão atual: 
+                                            <span class="quiz-numero-questao">${num_questao}</span> 
+                                            de
+                                            <span class="quiz-total-questoes">${QUIZ_QTD_QUESTOES}</span>
+                                            questões.
+                                        </span>
+                                    </div>
+                                    <div class="quiz-info-pergunta">
+                                        <span class="quiz-pergunta">${questoes[num_questao - 1].questao}</span>
+                                    </div>
+                                    <div class="quiz-info-alternativas">
+                                        <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                                    </div>
+                                    <div class="quiz-alternativas">
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaA" />
+                                            <label for="primeiraOpcao" id="labelOpcaoUm">${questoes[num_questao - 1].alternativas.alternativaA}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaB" />
+                                            <label for="segundaOpcao" id="labelOpcaoDois">${questoes[num_questao - 1].alternativas.alternativaB}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaC" />
+                                            <label for="terceiraOpcao" id="labelOpcaoTres">${questoes[num_questao - 1].alternativas.alternativaC}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" name="option" class="radio" value="alternativaD" />
+                                            <label for="quartaOpcao" id="labelOpcaoQuatro">${questoes[num_questao - 1].alternativas.alternativaD}</label>
+                                        </span>
+                                        </div>
+                                        <div class="quiz-botoes">
+                                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="quiz-right">
+                                <div class="box-pontuacao">
+                                    <div class="pontuacao-title">
+                                    <h1>
+                                        Progresso Quiz
+                                    </h1>
+                                    </div>
+                                    <div class="quiz-pontuacao-ingame">
+                                        <h4>
+                                            Quantidade de acertos: 
+                                            <span class="quiz-qtd-certas">
+
+                                            </span>
+                                        </h4>
+                                        <h4>
+                                            Quantidade de erros: 
+                                            <span class="quiz-qtd-erradas">
+
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <div class="quiz-resultado">
+                                         <span class="quiz-info-pontuacao-final">Pontuação Final:
+                                            <span class="quiz-pontuacao-final">***</span>
+                                        </span>
+                                        <span class="quiz-mensagem-final">***</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overlay-content-aviso"></div>
+                        <div class="content-aviso">
+                            <div class="content-aviso-info">
+                                <p>Você tem certeza que quer desistir do quiz?</p>
+                                <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                            </div>
+                            <div class="content-aviso-buttons">
+                                <button id="btn-confirm-desistir">
+                                    Sim, vou desistir.
+                                </button>
+                                <button id="btn-continuar-quiz">
+                                    Nunca, Continuarei.
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    // lógica do web-data-viz, faz o radio ativar quando clica no span
+                    let options = document.querySelectorAll('.alternativas-options');
+                    options.forEach(option => {
+
+                        option.addEventListener('click', () => {
+                            let radio = option.querySelector('input');
+                            radio.checked = true;
+
+                            btns_status();
+                        });
+
+                    });
+                });
+            } else {
+                console.error('Nenhum quiz econtrado!');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do Quiz ${error.message}`);
+            });
+
     } else if (quizTipo == 'personagens') {
-        let container_quiz = document.getElementById('container-quiz');
 
-        container_quiz.innerHTML =
-            `
-             <div id="quiz-personagens-res">
-                <div class="quiz-left">
-                    <button class="btn-fechar-quiz" onclick="fechar_quiz()">
-                        <i class="fa-solid fa-xmark" style="color: inherit;"></i>
-                        Desistir do Quiz
-                    </button>
-                    <div class="titulo-quiz">
-                        <h1>
-                            QUIZ 
-                            <span>PERSONAGENS</span>
-                        </h1>
-                    </div>
-                    <div id="quiz-personagens-game">
-                        <div class="quiz-info-questao">
-                            <span>
-                                Questão atual: 
-                                <span class="quiz-numero-questao"></span> 
-                                de
-                                <span class="quiz-total-questoes">${questoes_totais}</span>
-                                questões.
-                            </span>
-                        </div>
-                        <div class="quiz-info-pergunta">
-                            <span class="quiz-pergunta"></span>
-                        </div>
-                        <div class="quiz-info-alternativas">
-                            <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
-                        </div>
-                        <div class="quiz-alternativas">
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
-                                <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
-                                <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
-                                <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                            </span>
-                            <span class="alternativas-options">
-                                <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
-                                <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                            </span>
-                        </div>
-                        <div class="quiz-botoes">
-                            <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
-                            <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
-                            <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
-                            <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="quiz-right">
-                    <div class="box-pontuacao">
-                        <div class="pontuacao-title">
-                        <h1>
-                            Progresso Quiz
-                        </h1>
-                        </div>
-                        <div class="quiz-pontuacao-ingame">
-                            <h4>
-                                Quantidade de acertos: 
-                                <span class="quiz-qtd-certas">
+        let id_quiz = 3;
 
-                                </span>
-                            </h4>
-                            <h4>
-                                Quantidade de erros: 
-                                <span class="quiz-qtd-erradas">
+        fetch(`/quiz/${id_quiz}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (quiz) {
+                    QUIZ_NOME = quiz[0].nome_quiz;
+                    QUIZ_QTD_QUESTOES = quiz[0].qtd_questoes
 
-                                </span>
-                            </h4>
-                        </div>
-                        <div class="quiz-resultado">
-                            <span class="quiz-info-pontuacao-final">Pontuação Final:
-                                <span class="quiz-pontuacao-final">***</span>
-                            </span>
-                            <span class="quiz-mensagem-final">***</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    // for para guardar as questoes e suas alternativas, transformando o quiz cru em um JSON
 
-            <div class="overlay-content-aviso"></div>
-            <div class="content-aviso">
-                <div class="content-aviso-info">
-                    <p>Você tem certeza que quer desistir do quiz?</p>
-                    <h1>Você irá <span>perder todo seu progresso!</span></h1>                
-                </div>
-                <div class="content-aviso-buttons">
-                    <button id="btn-confirm-desistir">
-                        Sim, vou desistir.
-                    </button>
-                    <button id="btn-continuar-quiz">
-                        Nunca, Continuarei.
-                    </button>
-                </div>
-            </div>
-        `;
+                    for (let i = 0; i < quiz.length; i++) {
+
+                        if (quiz[i].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i].alt_texto;
+                        } else if (quiz[i + 1].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 1].alt_texto;
+                        } else if (quiz[i + 2].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 2].alt_texto;
+                        } else if (quiz[i + 3].tipo_alternativa == 'Correta') {
+                            ALTERNATIVA_CORRETA = quiz[i + 3].alt_texto;
+                        }
+
+                        let questao_objeto = {
+                            "questao": `${quiz[i].questao}`,
+                            "alternativas": {
+                                "alternativaA": `${quiz[i].alt_texto}`,
+                                "alternativaB": `${quiz[i + 1].alt_texto}`,
+                                "alternativaC": `${quiz[i + 2].alt_texto}`,
+                                "alternativaD": `${quiz[i + 3].alt_texto}`,
+                            },
+                            "alt_correta": `${ALTERNATIVA_CORRETA}`
+
+                        }
+                        i += 3; // ele pula o que ja foi inserido, e continua na forma certa
+                        questoes.push(questao_objeto);
+                    }
+
+                    // console.log(questoes, `OPA`);
+
+                    // tela quiz geral
+                    let container_quiz = document.getElementById('container-quiz');
+                    container_quiz.innerHTML =
+                    `
+                        <div id="quiz-personagens-res">
+                            <div class="quiz-left">
+                                <button class="btn-fechar-quiz" onclick="fechar_quiz()">
+                                    <i class="fa-solid fa-xmark" style="color: inherit;"></i>
+                                    Desistir do Quiz
+                                </button>
+                                <div class="titulo-quiz">
+                                    <h1>
+                                        QUIZ 
+                                        <span>${QUIZ_NOME}</span>
+                                    </h1>
+                                </div>
+                                <div id="quiz-personagens-game">
+                                    <div class="quiz-info-questao">
+                                        <span>
+                                            Questão atual: 
+                                            <span class="quiz-numero-questao">${num_questao}</span> 
+                                            de
+                                            <span class="quiz-total-questoes">${QUIZ_QTD_QUESTOES}</span>
+                                            questões.
+                                        </span>
+                                    </div>
+                                    <div class="quiz-info-pergunta">
+                                        <span class="quiz-pergunta">${questoes[num_questao - 1].questao}</span>
+                                    </div>
+                                    <div class="quiz-info-alternativas">
+                                        <span>Escolha <span>uma</span> opção dentre as abaixo:</span>
+                                    </div>
+                                    <div class="quiz-alternativas">
+                                        <span class="alternativas-options">
+                                            <input type="radio" class="alternativa-1" name="option" class="radio" value="alternativaA" />
+                                            <label for="primeiraOpcao" id="labelOpcaoUm">${questoes[num_questao - 1].alternativas.alternativaA}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" class="alternativa-2" name="option" class="radio" value="alternativaB" />
+                                            <label for="segundaOpcao" id="labelOpcaoDois">${questoes[num_questao - 1].alternativas.alternativaB}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" class="alternativa-3" name="option" class="radio" value="alternativaC" />
+                                            <label for="terceiraOpcao" id="labelOpcaoTres">${questoes[num_questao - 1].alternativas.alternativaC}</label>
+                                        </span>
+                                        <span class="alternativas-options">
+                                            <input type="radio" class="alternativa-4" name="option" class="radio" value="alternativaD" />
+                                            <label for="quartaOpcao" id="labelOpcaoQuatro">${questoes[num_questao - 1].alternativas.alternativaD}</label>
+                                        </span>
+                                    </div>
+                                    <div class="quiz-botoes">
+                                        <button onclick="confirmar_resposta('geral')" class="quiz-confirmar-resposta">Submeter resposta</button>
+                                        <button onclick="limpar_resposta('geral')" class="quiz-limpar" disabled>Limpar resposta</button>
+                                        <button onclick="avancar_questao('geral')" class="quiz-avancar-resposta" disabled>Avançar Questão</button>
+                                        <button onclick="finalizar_quiz('geral')" class="quiz-finalizar" disabled>Finalizar Quiz</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quiz-right">
+                                <div class="box-pontuacao">
+                                    <div class="pontuacao-title">
+                                    <h1>
+                                        Progresso Quiz
+                                    </h1>
+                                    </div>
+                                    <div class="quiz-pontuacao-ingame">
+                                        <h4>
+                                            Quantidade de acertos: 
+                                            <span class="quiz-qtd-certas">
+
+                                            </span>
+                                        </h4>
+                                        <h4>
+                                            Quantidade de erros: 
+                                            <span class="quiz-qtd-erradas">
+
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <div class="quiz-resultado">
+                                        <span class="quiz-info-pontuacao-final">Pontuação Final:
+                                            <span class="quiz-pontuacao-final">***</span>
+                                        </span>
+                                        <span class="quiz-mensagem-final">***</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overlay-content-aviso"></div>
+                        <div class="content-aviso">
+                            <div class="content-aviso-info">
+                                <p>Você tem certeza que quer desistir do quiz?</p>
+                                <h1>Você irá <span>perder todo seu progresso!</span></h1>                
+                            </div>
+                            <div class="content-aviso-buttons">
+                                <button id="btn-confirm-desistir">
+                                    Sim, vou desistir.
+                                </button>
+                                <button id="btn-continuar-quiz">
+                                    Nunca, Continuarei.
+                                </button>
+                            </div>
+                        </div>
+                    `;
+
+                    // lógica do web-data-viz, faz o radio ativar quando clica no span
+                    let options = document.querySelectorAll('.alternativas-options');
+                    options.forEach(option => {
+
+                        option.addEventListener('click', () => {
+                            let radio = option.querySelector('input');
+                            radio.checked = true;
+
+                            btns_status();
+                        });
+
+                    });
+                });
+            } else {
+                console.error('Nenhum quiz econtrado!');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do Quiz ${error.message}`);
+            });
     }
-
-    // lógica do web-data-viz, faz o radio ativar quando clica no span
-    let options = document.querySelectorAll('.alternativas-options');
-    options.forEach(option => {
-
-        option.addEventListener('click', () => {
-            let radio = option.querySelector('input');
-            radio.checked = true;
-
-            btns_status();
-        });
-
-    });
 }
 
 function fechar_quiz() {
@@ -659,7 +821,7 @@ function confirmar_resposta(quizTipo) {
 
 
 function avancar_questao(quizTipo) {
-    
+
 }
 
 function finalizar_quiz(quizTipo) {

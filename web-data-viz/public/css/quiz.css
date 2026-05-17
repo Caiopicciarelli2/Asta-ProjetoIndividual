@@ -704,6 +704,8 @@ body {
 
     cursor: pointer;
     transition: 0.3s;
+
+    gap: 0.5vw;
 }
 
 .alternativas-options:hover{
@@ -780,7 +782,9 @@ body {
     height: 60%;
     width: 70%;
 
-    border: 2px solid #47434383;
+    background-image: url('../assets/imagens/quiz-1-box.png');
+    background-size: 100% 100%;
+
     border-radius: 10px;
 }
 
